@@ -1,338 +1,115 @@
 ---
-title: Merchant Settings
-description: "Configure your account, wallet, and payment preferences"
+title: Settings
+description: "Configure webhooks for automated notifications"
 ---
 
-## Account Settings
+## Settings Overview
 
-Access your settings from the dashboard navigation menu. Here you can configure all aspects of your Shor merchant account.
+The settings page currently allows you to configure webhooks to receive automated notifications when transactions are completed.
 
-## Profile Configuration
+<Info>
+Additional settings and configuration options are planned for future releases.
+</Info>
 
-### Business Information
+## Webhook Configuration
 
-Update your business details:
+Webhooks allow you to receive real-time notifications when payments are completed.
 
-<Tabs>
-  <Tab title="Basic Info">
-    - **Business Name**: Displayed on payment pages
-    - **Email**: Primary contact for notifications
-    - **Phone**: For urgent support contact
-    - **Website**: Link to your main site
-  </Tab>
-  <Tab title="Branding">
-    - **Logo**: Upload your business logo
-    - **Brand Colors**: Customize payment page colors
-    - **Description**: About your business
-    - **Social Links**: Add social media profiles
-  </Tab>
-  <Tab title="Legal">
-    - **Business Type**: LLC, Corporation, etc.
-    - **Tax ID**: For compliance purposes
-    - **Address**: Business registration address
-    - **Terms URL**: Link to your terms of service
-  </Tab>
-</Tabs>
+### Setting Up Your Webhook
 
-### Account Security
+<Steps>
+  <Step title="Navigate to Settings">
+    Click on "Settings" in your dashboard navigation
+  </Step>
+  
+  <Step title="Go to Webhook Tab">
+    Select the "Webhook" tab in the settings page
+  </Step>
+  
+  <Step title="Enter Your URL">
+    Input your HTTPS webhook endpoint URL
+    ```
+    https://your-site.com/api/webhook
+    ```
+  </Step>
+  
+  <Step title="Save Configuration">
+    Click "Save Webhook" to activate
+  </Step>
+  
+  <Step title="Test Your Webhook">
+    Use the "Test Webhook" button to verify your endpoint receives test payloads
+  </Step>
+</Steps>
 
-<CardGroup cols={2}>
-  <Card title="Two-Factor Authentication" icon="shield-halved">
-    Enable 2FA for enhanced security using authenticator apps
-  </Card>
-  <Card title="API Keys" icon="key">
-    Generate and manage API keys for integrations
-  </Card>
-  <Card title="Session Management" icon="clock">
-    Configure auto-logout and session timeout settings
-  </Card>
-  <Card title="Login History" icon="history">
-    View recent login attempts and active sessions
-  </Card>
-</CardGroup>
+### Webhook Payload
 
-## Wallet Management
-
-### Primary Wallet
-
-Your primary wallet receives all payments:
-
-1. **Current Wallet**: View connected wallet address
-2. **Change Wallet**: Update to a different address
-3. **Wallet Type**: MetaMask, WalletConnect, etc.
-4. **Network**: Ensure Base network is selected
-
-<Warning>
-Changing your wallet address will only affect future payment links. Existing links will continue using their assigned contracts.
-</Warning>
-
-### Smart Contract Settings
-
-Configure your payout splitter contracts:
-
-<AccordionGroup>
-  <Accordion title="Single Recipient">
-    Default setup where all funds go to one wallet:
-    - 100% to primary wallet
-    - No splits required
-    - Simplest configuration
-  </Accordion>
-  <Accordion title="Multiple Recipients">
-    Split payments between multiple wallets:
-    - Add recipient addresses
-    - Set percentage for each
-    - Must total 100%
-    - Automatic distribution
-  </Accordion>
-  <Accordion title="Fee Recipients">
-    Separate wallets for fees:
-    - Platform fee wallet
-    - Referral fee wallet
-    - Charity donation wallet
-    - Custom fee structures
-  </Accordion>
-</AccordionGroup>
-
-## Payment Preferences
-
-### Fee Configuration
-
-Choose your default fee handling:
-
-| Setting | Customer Pays | You Receive | Best For |
-|---------|--------------|-------------|----------|
-| **Absorb Fees** | Exact amount | Amount - fees | Clean pricing |
-| **Pass Fees** | Amount + fees | Full amount | Margin preservation |
-
-### Default Settings
-
-Set defaults for new payment links:
-- **Currency**: USD (USDC settlement)
-- **Fee Mode**: Absorb or pass to customer
-- **Private Matching**: On/off by default
-- **Expiration**: Default link lifetime
-
-## Notification Settings
-
-### Email Notifications
-
-Configure when to receive emails:
-
-<Tabs>
-  <Tab title="Transactions">
-    - [ ] Every successful payment
-    - [ ] Failed payment attempts
-    - [ ] Large transactions (set threshold)
-    - [ ] Daily summary
-    - [ ] Weekly reports
-  </Tab>
-  <Tab title="Account">
-    - [ ] New login from unknown device
-    - [ ] Password changes
-    - [ ] Wallet address changes
-    - [ ] API key usage
-    - [ ] Security alerts
-  </Tab>
-  <Tab title="Platform">
-    - [ ] New features
-    - [ ] Maintenance notices
-    - [ ] Policy updates
-    - [ ] Marketing communications
-  </Tab>
-</Tabs>
-
-### Webhook Configuration
-
-Set up automated notifications:
+When a transaction is completed, you'll receive:
 
 ```json
 {
-  "webhook_url": "https://your-site.com/webhook",
-  "events": [
-    "payment.completed",
-    "payment.failed",
-    "link.created",
-    "link.updated"
-  ],
-  "secret": "your-webhook-secret"
+  "event": "transaction.completed",
+  "orderId": "ORD-ABC123-XYZ789",
+  "transactionHash": "0x...",
+  "status": "COMPLETED",
+  "merchantAmount": 94.00,
+  "feeAmount": 6.00,
+  "totalAmount": 100.00,
+  "timestamp": "2024-01-01T12:00:00.000Z",
+  "paymentLinkId": "clqabc123xyz",
+  "paymentLinkTitle": "Product Name",
+  "recipientEmail": "customer@example.com",
+  "paymentMethod": "BANK_TRANSFER",
+  "currency": "USD"
 }
 ```
 
+### Webhook Requirements
+
+- **HTTPS Only**: Your endpoint must use HTTPS
+- **Response Time**: Respond with 200 OK within 10 seconds
+- **Content Type**: Expects `application/json`
+
+<Note>
+Currently, only `transaction.completed` events are sent. Additional event types are planned for future releases.
+</Note>
+
 <Info>
-See our [Webhook Documentation](/merchant/webhooks) for detailed implementation guide.
+For detailed webhook implementation, see our [Webhook Documentation](/merchant/webhooks).
 </Info>
 
-## Integration Settings
+## Coming Soon
 
-### Coming Soon: API Access
+Additional settings are planned for future releases, including:
 
-API functionality is currently under development. Stay tuned for:
-- RESTful API endpoints
-- API key management
-- Webhook configuration
-- Rate limiting controls
-
-Contact support@shorpay.com to join our API beta program.
-
-### Third-Party Integrations
-
-Connect external services:
-
-<CardGroup cols={2}>
-  <Card title="Accounting" icon="calculator">
-    QuickBooks, Xero, FreshBooks integration
-  </Card>
-  <Card title="E-commerce" icon="cart-shopping">
-    Shopify, WooCommerce plugins
-  </Card>
-  <Card title="CRM" icon="users">
-    Salesforce, HubSpot connectors
-  </Card>
-  <Card title="Analytics" icon="chart-line">
-    Google Analytics, Mixpanel tracking
-  </Card>
-</CardGroup>
-
-## Compliance Settings
-
-### KYC/AML Configuration
-
-Configure compliance requirements:
-
-- **Customer Verification**: Level required
-- **Transaction Limits**: Set maximum amounts
-- **Geographic Restrictions**: Block certain countries
-- **Risk Tolerance**: Conservative/Moderate/Aggressive
-
-### Reporting
-
-Enable compliance reports:
-- Monthly transaction reports
-- Suspicious activity alerts
-- Tax documentation (1099s)
-- Audit trails
-
-## Display Preferences
-
-### Dashboard Customization
-
-Personalize your dashboard:
-
-<Tabs>
-  <Tab title="Layout">
-    - Grid or list view
-    - Compact or comfortable spacing
-    - Sidebar collapsed/expanded
-    - Widget arrangement
-  </Tab>
-  <Tab title="Theme">
-    - Light mode
-    - Dark mode
-    - Auto (follows system)
-    - Custom accent colors
-  </Tab>
-  <Tab title="Data Display">
-    - Date format (MM/DD or DD/MM)
-    - Time zone
-    - Currency display
-    - Number formatting
-  </Tab>
-</Tabs>
-
-### Language and Localization
-
-- **Language**: Interface language
-- **Currency Display**: Local currency conversion
-- **Date/Time Format**: Regional preferences
-- **Number Format**: Decimal/thousand separators
-
-## Advanced Settings
-
-### Developer Options
-
-<AccordionGroup>
-  <Accordion title="Sandbox Mode">
-    Test payment flows without real transactions:
-    - Separate test environment
-    - Test payment links
-    - Simulated transactions
-    - No real money movement
-  </Accordion>
-  <Accordion title="Debug Mode">
-    Enhanced logging for troubleshooting:
-    - Detailed API responses
-    - Transaction flow logs
-    - Error details
-    - Performance metrics
-  </Accordion>
-  <Accordion title="Custom Scripts">
-    Add custom JavaScript to payment pages:
-    - Analytics tracking
-    - Conversion pixels
-    - Custom validations
-    - UI enhancements
-  </Accordion>
-</AccordionGroup>
-
-## Backup and Export
-
-### Data Export
-
-Export all your data:
-1. Click "Export Account Data"
-2. Select data types:
-   - Payment links
-   - Transactions
-   - Customer data
-   - Settings
-3. Choose format (CSV/JSON)
-4. Download securely
-
-### Account Backup
-
-Regular backups include:
-- Configuration settings
-- Payment link templates
+- Account profile management
+- Email notification preferences  
+- API access and keys
+- Advanced payment configurations
 - Integration settings
-- Custom scripts
 
-<Tip>
-Set up automatic weekly backups to ensure you never lose important configurations.
-</Tip>
-
-## Danger Zone
-
-### Critical Actions
-
-<Warning>
-These actions cannot be undone. Proceed with caution.
-</Warning>
-
-- **Close Account**: Permanently delete account
-- **Clear All Data**: Remove all transactions
-- **Reset Settings**: Restore defaults
-- **Revoke All Keys**: Invalidate API access
+<Info>
+We're actively working on expanding the settings options. Stay tuned for updates!
+</Info>
 
 ## Getting Help
 
-### Support Resources
+If you need assistance with webhook configuration:
 
-- **Documentation**: You're here!
+- **Documentation**: See our [Webhook Guide](/merchant/webhooks)
 - **Email Support**: support@shorpay.com
-- **Live Chat**: Available in dashboard
-- **Community Forum**: Coming soon
 
 ### Settings FAQ
 
 <FAQ>
-  <FAQItem question="Can I change my wallet address?">
-    Yes, but it only affects new payment links. Existing links continue using their assigned contracts.
+  <FAQItem question="Why is my webhook not receiving events?">
+    Ensure your endpoint uses HTTPS and responds with 200 OK within 10 seconds. Use the "Test Webhook" button to debug.
   </FAQItem>
-  <FAQItem question="How do I enable 2FA?">
-    Go to Security settings, click "Enable 2FA", and follow the QR code setup with your authenticator app.
+  <FAQItem question="Can I have multiple webhook URLs?">
+    Currently, only one webhook URL is supported per account.
   </FAQItem>
-  <FAQItem question="What happens to my data if I close my account?">
-    Transaction records are retained for legal compliance, but your account access is terminated.
+  <FAQItem question="What events can I receive?">
+    Currently, only `transaction.completed` events are sent when payments are successfully processed.
   </FAQItem>
 </FAQ>
 

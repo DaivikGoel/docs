@@ -10,8 +10,8 @@ Shor makes it easy to pay merchants using your preferred payment method. This gu
 ## What You'll Need
 
 <CardGroup cols={2}>
-  <Card title="Payment Method" icon="credit-card">
-    Currently supporting Zelle (US bank account required). More methods coming soon!
+  <Card title="Zelle Access" icon="building-columns">
+    A US bank account with Zelle enabled. Check your banking app for the Zelle feature.
   </Card>
   <Card title="Email Address" icon="envelope">
     For receiving payment confirmations and receipts
@@ -20,12 +20,12 @@ Shor makes it easy to pay merchants using your preferred payment method. This gu
 
 ## How Shor Works for You
 
-When a merchant sends you a Shor payment link, you can pay using familiar methods like Zelle, while the merchant receives cryptocurrency (USDC). You don't need to know anything about crypto!
+When a merchant sends you a Shor payment link, you can pay using Zelle (through Phoenix Market) while the merchant receives cryptocurrency (USDC). You don't need to know anything about crypto!
 
 ### Benefits for You
 
-- **Familiar Payment Methods**: Use Zelle just like you normally would
-- **Secure Transactions**: Protected by blockchain technology
+- **Zelle Payments**: Use the payment method you already know
+- **Two Options**: Choose automated or manual Zelle
 - **Fast Processing**: Payments complete in minutes
 - **Clear Confirmations**: Instant receipt of your payment
 
@@ -46,17 +46,24 @@ When a merchant sends you a Shor payment link, you can pay using familiar method
     - Support if needed
   </Step>
   
-  <Step title="Choose Payment Method">
-    Select your preferred payment method:
-    - **Zelle**: Available now for US customers
-    - More options coming soon
+  <Step title="Start Payment">
+    Click "Pay Now" to begin:
+    - Opens Phoenix Market payment window
+    - Choose between two Zelle options
   </Step>
   
-  <Step title="Complete Payment">
-    Follow the instructions for your chosen method:
-    - You'll receive specific payment details
-    - Complete payment in your banking app
-    - Return to confirm completion
+  <Step title="Select Zelle Method">
+    Phoenix offers two ways to pay:
+    
+    **Automated Zelle** (Recommended):
+    - Connect bank via Teller
+    - Automatic payment processing
+    - Faster confirmation
+    
+    **Manual Zelle**:
+    - Use your own bank app
+    - Follow provided instructions
+    - Traditional Zelle transfer
   </Step>
   
   <Step title="Receive Confirmation">
@@ -67,47 +74,53 @@ When a merchant sends you a Shor payment link, you can pay using familiar method
   </Step>
 </Steps>
 
-## Payment Methods
+## Payment Method: Zelle
 
-### Zelle Payments
+### Phoenix Market Integration
 
 <Info>
-Zelle is currently the primary payment method. You'll need a US bank account with Zelle enabled.
+Phoenix Market processes your Zelle payment and converts it to USDC for the merchant. They offer two convenient ways to send Zelle.
 </Info>
 
-#### How to Pay with Zelle
+#### Automated Zelle (Easier & Faster)
 
-1. **Open Your Banking App**
-   - Most major US banks support Zelle
-   - Look for "Send with Zelle" option
+1. **Bank Connection**
+   - Connect via Teller's secure API
+   - One-time authorization only
+   - Bank-level encryption
 
-2. **Enter Payment Details**
-   - Recipient email/phone (provided by Shor)
-   - Exact amount shown
-   - Reference code in memo field
+2. **Automatic Processing**
+   - Zelle sent automatically
+   - No manual steps needed
+   - Instant confirmation
 
-3. **Confirm and Send**
-   - Double-check amount matches exactly
-   - Include the reference code
-   - Send payment
+#### Manual Zelle (Traditional)
 
-4. **Return to Shor**
-   - Click "I've completed payment"
-   - Wait for confirmation (usually 2-5 minutes)
+1. **Get Instructions**
+   - Receive recipient details
+   - Note exact amount
 
-### Coming Soon
+2. **Send via Your Bank**
+   - Use your banking app
+   - Send to provided recipient
+   - Confirm when sent
 
-<CardGroup cols={3}>
-  <Card title="Venmo" icon="venmo">
-    Popular P2P payments (Coming Q1 2025)
-  </Card>
-  <Card title="Wise" icon="globe">
-    International transfers (Coming Q2 2025)
-  </Card>
-  <Card title="PayPal" icon="paypal">
-    Global payments (Under evaluation)
-  </Card>
-</CardGroup>
+### Supported Banks
+
+**For Automated Zelle** (via Teller):
+- Bank of America
+- Chase
+- Wells Fargo
+- US Bank
+- Capital One
+- And many more...
+
+**For Manual Zelle**:
+- Any US bank with Zelle
+
+<Note>
+If your bank isn't supported by Teller, simply use the Manual Zelle option instead.
+</Note>
 
 ## Understanding Fees
 
@@ -117,23 +130,6 @@ The merchant decides whether to:
 - **Absorb fees**: You pay the exact amount shown
 - **Pass fees**: You pay the amount plus a small processing fee
 
-<Note>
-Fees will always be clearly shown before you complete payment. No hidden charges!
-</Note>
-
-### Fee Transparency
-
-Before paying, you'll see:
-- Base amount
-- Processing fee (if any)
-- Total you'll pay
-
-Example:
-```
-Product: $100.00
-Processing Fee: $2.90
-Total to Pay: $102.90
-```
 
 ## Payment Security
 
@@ -176,7 +172,15 @@ Total to Pay: $102.90
   </FAQItem>
   
   <FAQItem question="How long does payment take?">
-    Most payments complete within 2-5 minutes. You'll receive confirmation as soon as it's processed.
+    Automated Zelle: 2-3 minutes. Manual Zelle: 5-10 minutes for verification.
+  </FAQItem>
+  
+  <FAQItem question="Which Zelle option should I use?">
+    We recommend Automated Zelle for speed and convenience. Use Manual Zelle if your bank isn't supported by Teller or you prefer not to connect your account.
+  </FAQItem>
+  
+  <FAQItem question="Is connecting my bank safe?">
+    Yes! Automated Zelle uses Teller, a secure banking API. Your credentials are encrypted and never shared with merchants or Shor.
   </FAQItem>
   
   <FAQItem question="What if I need help?">
@@ -191,16 +195,16 @@ Total to Pay: $102.90
 ## Tips for Smooth Payments
 
 ### Do's
-✅ **Exact Amounts**: Pay the exact amount shown
-✅ **Reference Code**: Always include in memo
-✅ **Quick Payment**: Complete within 30 minutes
-✅ **Save Receipts**: Keep email confirmations
+- ✅ **Secure Connection**: Use a trusted internet connection
+- ✅ **Verify Amount**: Check the transfer amount carefully
+- ✅ **Complete Process**: Stay on page until confirmation
+- ✅ **Save Receipts**: Keep email confirmations
 
 ### Don'ts
-❌ **Round Numbers**: Don't round up or down
-❌ **Skip Memo**: Always include reference
-❌ **Multiple Payments**: Don't split payments
-❌ **Share Links**: Links are unique to you
+- ❌ **Public WiFi**: Avoid banking on public networks
+- ❌ **Share Credentials**: Never share bank login info
+- ❌ **Multiple Attempts**: Don't retry if first attempt is processing
+- ❌ **Close Window**: Keep payment window open until complete
 
 ## Getting Help
 
@@ -208,7 +212,7 @@ Total to Pay: $102.90
 
 Check these first:
 1. Payment amount matches exactly
-2. Reference code included in memo
+2. Payment sent to correct recipient
 3. Used correct recipient details
 4. Waited 5-10 minutes for processing
 

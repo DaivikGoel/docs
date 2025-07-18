@@ -26,31 +26,15 @@ Webhooks allow you to receive real-time notifications when events occur in your 
 
 ## Available Events
 
-### Payment Events
+### Currently Implemented
 
 | Event | Description | When Triggered |
 |-------|-------------|----------------|
-| `payment.initiated` | Payment process started | Customer begins payment |
-| `payment.pending` | Payment awaiting confirmation | Payment sent, awaiting blockchain |
-| `payment.completed` | Payment successfully received | USDC received in wallet |
-| `payment.failed` | Payment failed or cancelled | Payment not completed |
+| `transaction.completed` | Payment successfully received | USDC confirmed in merchant's wallet |
 
-### Link Events
-
-| Event | Description | When Triggered |
-|-------|-------------|----------------|
-| `link.created` | New payment link created | Via dashboard or API |
-| `link.updated` | Payment link modified | Any link property changed |
-| `link.activated` | Link enabled for payments | Status changed to active |
-| `link.deactivated` | Link disabled | Status changed to inactive |
-
-### Account Events
-
-| Event | Description | When Triggered |
-|-------|-------------|----------------|
-| `account.updated` | Account settings changed | Profile or settings modified |
-| `wallet.changed` | Wallet address updated | New wallet connected |
-| `webhook.test` | Test webhook event | Testing endpoint configuration |
+<Info>
+Additional webhook events are planned for future releases. Currently, only successful transaction notifications are sent.
+</Info>
 
 ## Setting Up Webhooks
 
@@ -62,20 +46,12 @@ app.post('/webhooks/shor', express.raw({type: 'application/json'}), (req, res) =
   const signature = req.headers['x-shor-signature'];
   const event = JSON.parse(req.body);
   
-  // Verify signature (see below)
-  if (!verifyWebhookSignature(req.body, signature)) {
-    return res.status(401).send('Invalid signature');
-  }
+  // Validate webhook source (signature verification coming soon)
+  // For now, ensure your endpoint URL is not publicly discoverable
   
   // Process event
-  switch(event.type) {
-    case 'payment.completed':
-      handlePaymentCompleted(event.data);
-      break;
-    case 'payment.failed':
-      handlePaymentFailed(event.data);
-      break;
-    // ... handle other events
+  if (event.event === 'transaction.completed') {
+    handleTransactionCompleted(event);
   }
   
   // Always respond with 200 OK
@@ -85,36 +61,26 @@ app.post('/webhooks/shor', express.raw({type: 'application/json'}), (req, res) =
 
 ### 2. Configure in Dashboard
 
-1. Go to Settings → Webhooks
-2. Click "Add Webhook Endpoint"
-3. Enter your HTTPS URL
-4. Select events to receive
-5. Copy your webhook secret
-6. Save configuration
+1. Go to Settings → Webhook tab
+2. Enter your webhook URL (HTTPS required)
+3. Click "Save Webhook"
+4. Use "Test Webhook" to verify your endpoint
+5. View test results to debug any issues
 
-### 3. Verify Webhook Signatures
+### 3. Webhook Headers
 
-<Warning>
-Always verify webhook signatures to ensure requests are from Shor and haven't been tampered with.
-</Warning>
+Shor sends these headers with each webhook:
 
-```javascript
-const crypto = require('crypto');
-
-function verifyWebhookSignature(payload, signature) {
-  const secret = process.env.SHOR_WEBHOOK_SECRET;
-  
-  const expectedSignature = crypto
-    .createHmac('sha256', secret)
-    .update(payload)
-    .digest('hex');
-  
-  return crypto.timingSafeEqual(
-    Buffer.from(signature),
-    Buffer.from(expectedSignature)
-  );
-}
 ```
+Content-Type: application/json
+X-Shor-Event: transaction.completed
+X-Shor-Timestamp: 2024-01-01T00:00:00.000Z
+X-Shor-Test: true  // Only present for test webhooks
+```
+
+<Note>
+Webhook signature verification is planned for a future release. Currently, ensure your endpoint is not publicly discoverable and validate the payload structure.
+</Note>
 
 ## Webhook Payload Structure
 
@@ -124,74 +90,63 @@ All webhooks follow this structure:
 
 ```json
 {
-  "id": "evt_1234567890",
-  "type": "payment.completed",
-  "created": 1672531200,
-  "data": {
-    // Event-specific data
-  },
-  "api_version": "2024-01-01"
+  "event": "transaction.completed",
+  "orderId": "ORD-ABC123-XYZ789",
+  "transactionHash": "0x123...abc",
+  "status": "COMPLETED",
+  "merchantAmount": 97.10,
+  "feeAmount": 2.90,
+  "totalAmount": 100.00,
+  "timestamp": "2024-01-01T12:00:00.000Z",
+  "paymentLinkId": "link_xyz789",
+  "paymentLinkTitle": "Premium Service",
+  "recipientEmail": "customer@example.com",
+  "paymentMethod": "BANK_TRANSFER",
+  "currency": "USD"
 }
 ```
 
 ### Event Data Examples
 
-<Tabs>
-  <Tab title="payment.completed">
-    ```json
-    {
-      "id": "evt_abc123",
-      "type": "payment.completed",
-      "created": 1672531200,
-      "data": {
-        "transaction_id": "ORD-1234-5678-9012",
-        "payment_link_id": "link_xyz789",
-        "amount": "100.00",
-        "usdc_received": "97.10",
-        "fee": "2.90",
-        "customer_email": "customer@example.com",
-        "transaction_hash": "0x123...abc",
-        "payout_wallet": "0x456...def",
-        "timestamp": "2024-01-01T12:00:00Z"
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="link.created">
-    ```json
-    {
-      "id": "evt_def456",
-      "type": "link.created",
-      "created": 1672531200,
-      "data": {
-        "link_id": "link_new123",
-        "title": "Premium Service",
-        "amount": "150.00",
-        "fee_handling": "customer_pays",
-        "created_at": "2024-01-01T12:00:00Z",
-        "url": "https://pay.shorpay.com/link/new123"
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="payment.failed">
-    ```json
-    {
-      "id": "evt_ghi789",
-      "type": "payment.failed",
-      "created": 1672531200,
-      "data": {
-        "transaction_id": "ORD-fail-123",
-        "payment_link_id": "link_xyz789",
-        "amount": "100.00",
-        "reason": "payment_timeout",
-        "customer_email": "customer@example.com",
-        "timestamp": "2024-01-01T12:00:00Z"
-      }
-    }
-    ```
-  </Tab>
-</Tabs>
+### Example Webhook Payload
+
+```json
+{
+  "event": "transaction.completed",
+  "orderId": "ORD-1234-5678-9012",
+  "transactionHash": "0xabc123def456...",
+  "status": "COMPLETED",
+  "merchantAmount": 97.10,
+  "feeAmount": 2.90,
+  "totalAmount": 100.00,
+  "timestamp": "2024-01-15T14:30:00.000Z",
+  "paymentLinkId": "clqabc123xyz",
+  "paymentLinkTitle": "Premium Consultation",
+  "recipientEmail": "customer@example.com",
+  "paymentMethod": "BANK_TRANSFER",
+  "currency": "USD"
+}
+```
+
+### Test Webhook Payload
+
+When using the "Test Webhook" button, you'll receive:
+
+```json
+{
+  "event": "transaction.completed",
+  "orderId": "TEST-ORDER-123",
+  "status": "COMPLETED",
+  "merchantAmount": 97.10,
+  "feeAmount": 2.90,
+  "totalAmount": 100.00,
+  "timestamp": "2024-01-15T14:30:00.000Z",
+  "paymentLinkTitle": "Test Payment",
+  "recipientEmail": "test@example.com",
+  "paymentMethod": "BANK_TRANSFER",
+  "currency": "USD"
+}
+```
 
 ## Best Practices
 
@@ -232,14 +187,15 @@ app.post('/webhooks/shor', async (req, res) => {
 });
 ```
 
-### Retry Logic
+### Webhook Delivery
 
-Shor implements automatic retries:
-- **Initial attempt**: Immediate
-- **First retry**: After 10 seconds
-- **Second retry**: After 1 minute
-- **Final retry**: After 10 minutes
-- **Max attempts**: 4 total
+- **Timeout**: 10 seconds per request
+- **Method**: POST with JSON payload
+- **Response**: Your endpoint should return 200 OK
+
+<Note>
+Currently, webhooks are sent once with no automatic retry mechanism. Failed webhooks are logged but not retried. Retry functionality is planned for a future release.
+</Note>
 
 ## Testing Webhooks
 
@@ -341,14 +297,14 @@ async function recordTransaction(data) {
 - [ ] Validate event data structure
 - [ ] Implement rate limiting
 
-### IP Whitelisting
+### Security Recommendations
 
 <Info>
-Shor webhooks originate from these IP ranges:
-- Production: `52.14.0.0/16`
-- Backup: `35.180.0.0/16`
-
-Contact support for latest IP list.
+While webhook signatures are not yet implemented, you can:
+- Use a hard-to-guess webhook URL
+- Validate the payload structure
+- Check that amounts match your records
+- Verify transaction hashes on the blockchain
 </Info>
 
 ## Troubleshooting
@@ -393,8 +349,8 @@ Contact support for latest IP list.
   <FAQItem question="How do I update my webhook secret?">
     Generate a new secret in dashboard settings. Update your code before saving to avoid downtime.
   </FAQItem>
-  <FAQItem question="Can I filter which events I receive?">
-    Yes, select specific events when configuring your webhook endpoint in the dashboard.
+  <FAQItem question="What events are currently available?">
+    Currently, only `transaction.completed` events are sent when payments are successfully processed.
   </FAQItem>
 </FAQ>
 

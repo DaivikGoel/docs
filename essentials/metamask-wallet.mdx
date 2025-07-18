@@ -1,26 +1,43 @@
 ---
-title: 'MetaMask Wallet Guide for Beginners'
-description: 'Complete guide to creating and using your first crypto wallet with MetaMask'
+title: 'Understanding Crypto Wallets for Shor Payments'
+description: 'Learn about crypto wallets and how to safely manage your USDC wallet address for receiving payments'
 ---
 
-## What is MetaMask?
+## How Wallet Addresses Work with Shor
 
-MetaMask is one of the most popular cryptocurrency wallets that allows you to:
+With Shor, you don't need to connect a wallet like MetaMask directly to our platform. Instead, you simply provide your wallet address where you want to receive USDC payments. Here's what you need to know:
+
+- **No wallet connection required** - Just enter your wallet address as text
+- **You keep full control** - Payments go directly to your wallet
+- **Base chain compatible** - Your wallet must support USDC on Base network
+- **Any wallet works** - MetaMask, Coinbase Wallet, or any EVM-compatible wallet
+
+## What is a Crypto Wallet?
+
+A cryptocurrency wallet is a tool that allows you to:
 
 - Store and manage your cryptocurrencies
-- Connect to decentralized applications (dApps)
-- Send and receive crypto tokens
-- Interact with blockchain networks like Ethereum
-
-Think of MetaMask as a digital wallet that lives in your web browser, similar to how you might have a physical wallet for traditional money.
+- Send and receive crypto tokens like USDC
+- Interact with blockchain networks
+- Keep your funds secure with private keys
 
 ## Before You Begin
 
 <Note>
-**Security First**: Never share your private keys or seed phrase with anyone. These are like the master password to your wallet and should be kept completely private.
+**Security First**: 
+- Never share your private keys or seed phrase with anyone
+- Always double-check your wallet address before submitting it to Shor
+- Ensure your wallet supports USDC on the Base network
+- Incorrect addresses will result in permanent loss of funds
 </Note>
 
-## Choose Your Platform
+## Getting Your Wallet Address
+
+To receive payments through Shor, you need a wallet address. This is a 42-character string that starts with "0x" followed by 40 hexadecimal characters.
+
+Example: `0x742d35Cc6634C0532925a3b844Bc9e7595f2BD8e`
+
+## Choose Your Wallet
 
 <CardGroup cols={2}>
   <Card title="Browser Extension" icon="window-maximize" href="#browser-extension-setup">
@@ -263,11 +280,12 @@ The following sections apply to both browser extension and mobile app users.
   <Accordion icon="network-wired" title="Understanding Networks">
     MetaMask can connect to different blockchain networks:
     
-    - **Ethereum Mainnet**: The main Ethereum network (real money)
+    - **Base Mainnet**: The Base network where Shor processes USDC payments (real money)
+    - **Ethereum Mainnet**: The main Ethereum network 
     - **Testnets**: Practice networks (fake money for testing)
     - **Other Networks**: Polygon, BSC, Arbitrum, etc.
     
-    Start with Ethereum Mainnet for real transactions.
+    For Shor payments, you'll need to use Base Mainnet.
   </Accordion>
   
   <Accordion icon="wallet" title="Getting Your First Crypto">
@@ -276,6 +294,7 @@ The following sections apply to both browser extension and mobile app users.
     1. **Buy from an exchange** (Coinbase, Kraken, Binance)
     2. **Receive from someone** (share your wallet address)
     3. **Purchase directly in MetaMask** (via MoonPay, Transak)
+    4. **Buy directly from Shor** when receiving your first payment
     
     Note: You need ETH to pay for transaction fees on Ethereum.
   </Accordion>
@@ -412,4 +431,37 @@ If you need assistance:
 
 ---
 
-Congratulations! You've successfully created your first crypto wallet. Take your time to explore and practice with small amounts before making larger transactions. Welcome to the world of cryptocurrency!
+## Using Your Wallet Address with Shor
+
+### For Merchants
+
+When creating a payment link on Shor:
+
+1. **Copy your wallet address** from your wallet app
+2. **Navigate to Create Payment Link** in your Shor dashboard
+3. **Paste your wallet address** in the "USDC Wallet Address (Base Chain)" field
+4. **Double-check the address** - ensure it's exactly 42 characters and starts with 0x
+5. **Create your payment link** - customers' payments will go directly to this wallet
+
+<Warning>
+**Critical**: Always verify your wallet address is correct before creating a payment link. Payments sent to wrong addresses cannot be recovered.
+</Warning>
+
+### For Customers
+
+As a customer paying through Shor:
+- You don't need to connect any wallet
+- Simply complete payment through our secure payment processor
+- The merchant receives USDC directly to their wallet
+- You'll receive a confirmation once the payment is processed
+
+## Important Reminders for Shor Users
+
+<Note>
+- **Merchants**: Enter your wallet address carefully - there's no wallet connection feature
+- **Base Network**: Ensure your wallet supports USDC on Base chain
+- **No MetaMask connection**: You don't connect MetaMask to Shor, just provide your address
+- **Direct payments**: Funds go straight to your wallet, not held by Shor
+</Note>
+
+Congratulations! You now understand how to use your crypto wallet with Shor's payment platform. Remember to always double-check your wallet address and ensure it's compatible with the Base network for USDC transactions.

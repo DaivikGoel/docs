@@ -17,6 +17,7 @@ Payment links are the core of the Shor platform. They're unique URLs that you ca
   <Step title="Fill in Basic Details">
     **Required Fields:**
     - **Title**: Clear, descriptive name for what you're selling
+    - **USDC Wallet Address**: Your Base-compatible wallet address (42 characters starting with 0x)
     - **Fee Handling**: Choose who pays the platform fee
     
     **Optional Fields:**
@@ -27,8 +28,6 @@ Payment links are the core of the Shor platform. They're unique URLs that you ca
   
   <Step title="Configure Advanced Options">
     - **Active Status**: Enable/disable the link
-    - **Private Matching**: Require specific payment verification
-    - **Expiration**: Set time limits (coming soon)
   </Step>
   
   <Step title="Review and Create">
@@ -77,8 +76,8 @@ Description: "Any amount helps us continue our work"
     
     **Example:**
     - Customer pays: $100.00
-    - Platform fee (2.9%): $2.90
-    - You receive: $97.10
+    - Platform fee (6%): $6.00
+    - You receive: $94.00
   </Tab>
   
   <Tab title="Customer Pays Fee">
@@ -87,10 +86,12 @@ Description: "Any amount helps us continue our work"
     - You receive full amount
     - Best for preserving margins
     
+    **Note:** This option is coming soon.
+    
     **Example:**
     - Listed amount: $100.00
-    - Platform fee (2.9%): $2.90
-    - Customer pays: $102.90
+    - Platform fee (6%): $6.38
+    - Customer pays: $106.38
     - You receive: $100.00
   </Tab>
 </Tabs>
@@ -132,25 +133,12 @@ Image best practices:
 
 ## Advanced Features
 
-### Private Matching
-Enable this for:
-- High-value transactions
-- Verified customers only
-- Compliance requirements
-- Additional security
-
 ### Smart Contract Configuration
-Each payment link is associated with a smart contract that can:
-- Split payments between multiple recipients
-- Automate fee distribution
-- Ensure trustless execution
-
-### Custom Parameters
-Add tracking parameters to your links:
-```
-https://pay.shorpay.com/link/abc123?ref=email-campaign
-https://pay.shorpay.com/link/abc123?source=instagram
-```
+Each payment link automatically creates a smart contract on Base network that:
+- Receives USDC payments from customers
+- Deducts platform fees (if merchant absorbs)
+- Sends remaining funds to your wallet address
+- Provides transparent, verifiable transactions
 
 ## Payment Link Management
 
@@ -172,12 +160,36 @@ Reasons to disable:
 - Switching to new pricing
 - Security concerns
 
-### Duplicating Links
-Save time by duplicating existing links:
-1. Find successful link
-2. Click "Duplicate"
-3. Modify details as needed
-4. Create new link
+
+## Wallet Address Requirements
+
+<Warning>
+**Critical**: Double-check your USDC wallet address before creating payment links. Payments sent to incorrect addresses cannot be recovered.
+</Warning>
+
+### Setting Your Wallet Address
+
+When creating a payment link, you must provide:
+- **Valid EVM wallet address**: 42 characters (0x + 40 hex characters)
+- **Base chain compatible**: Must support USDC on Base network
+- **Your own wallet**: You must control the private keys
+
+### Wallet Address Format
+```
+Example: 0x742d35Cc6634C0532925a3b844Bc9e7595f2BD8e
+         └─┘└────────────────────────────────────┘
+         Prefix        40 hexadecimal characters
+```
+
+### Compatible Wallets
+- MetaMask
+- Coinbase Wallet
+- Rainbow Wallet
+- Any EVM-compatible wallet that supports Base network
+
+<Note>
+You don't need to connect your wallet to Shor. Simply copy and paste your wallet address from your wallet app.
+</Note>
 
 ## Best Practices
 
@@ -227,7 +239,7 @@ Generate QR codes for:
 - Event displays
 - Business cards
 
-### Embedding
+### Embedding (Coming Soon)
 Add payment buttons to your website:
 ```html
 <a href="https://pay.shorpay.com/link/your-link-id" 
@@ -236,21 +248,19 @@ Add payment buttons to your website:
 </a>
 ```
 
-## Tracking Performance
-
-Monitor link metrics:
-- **Views**: How many times the link was accessed
-- **Conversions**: Successful payments
-- **Conversion Rate**: Percentage of views that paid
-- **Revenue**: Total amount collected
-
 ## Common Mistakes to Avoid
 
-1. **Unclear pricing**: Always be transparent about amounts
-2. **Missing descriptions**: Provide context for payments
-3. **Broken image links**: Test images before sharing
-4. **Forgetting to activate**: Ensure links are active
-5. **No testing**: Always test with a small amount first
+1. **Wrong wallet address**: Always copy-paste to avoid typos
+2. **Non-Base compatible wallet**: Ensure your wallet supports Base network
+3. **Unclear pricing**: Always be transparent about amounts
+4. **Missing descriptions**: Provide context for payments
+5. **Broken image links**: Test images before sharing
+6. **Forgetting to activate**: Ensure links are active
+7. **No testing**: Always test with a small amount first
+
+<Tip>
+Before your first real transaction, create a test payment link with a small amount ($1) to verify your wallet receives funds correctly on Base network.
+</Tip>
 
 ## Next Steps
 

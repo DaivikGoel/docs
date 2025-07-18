@@ -17,7 +17,6 @@
             "group": "Overview",
             "pages": [
               "index",
-              "quickstart",
               "how-it-works"
             ]
           },
@@ -34,13 +33,6 @@
       {
         "tab": "Merchant Guide",
         "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "merchant/wallet-setup",
-              "merchant/first-payment-link"
-            ]
-          },
           {
             "group": "Dashboard",
             "pages": [

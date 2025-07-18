@@ -20,24 +20,23 @@ Shor integrates with multiple payment providers to offer your customers familiar
 
 Phoenix is our primary payment provider, offering:
 - **Zelle Integration**: Direct bank transfers
-- **Fast Settlement**: Usually under 5 minutes
-- **Compliance Built-in**: Automatic AML/KYC
+- **Fast Settlement**: Usually under 30 seconds
 - **High Success Rates**: 95%+ completion
 
 ### Coming Soon
 
-<CardGroup cols={3}>
-  <Card title="Venmo" icon="venmo">
+<CardGroup cols={2}>
+  <Card title="Venmo" icon="mobile">
     Popular peer-to-peer payments
-    Coming Q1 2025
   </Card>
   <Card title="Wise" icon="globe">
     International transfers
-    Coming Q2 2025
   </Card>
-  <Card title="PayPal" icon="paypal">
-    Global payment network
-    Under evaluation
+  <Card title="CashApp" icon="credit-card">
+    Mobile payments and transfers
+  </Card>
+  <Card title="Revolut" icon="credit-card">
+    Digital banking and payments
   </Card>
 </CardGroup>
 
@@ -73,17 +72,6 @@ Phoenix is our primary payment provider, offering:
   </Step>
 </Steps>
 
-## Provider Features Comparison
-
-| Feature | Phoenix (Zelle) | Venmo (Soon) | Wise (Soon) |
-|---------|----------------|--------------|-------------|
-| **Countries** | USA | USA | 80+ |
-| **Speed** | 2-5 min | 5-10 min | 1-24 hours |
-| **Limits** | $500-5000/day | $5000/week | $50k/transfer |
-| **Fees** | Included | Included | Included |
-| **Mobile** | ✓ | ✓ | ✓ |
-| **Desktop** | ✓ | ✓ | ✓ |
-
 ## Phoenix Deep Dive
 
 ### Zelle Integration
@@ -117,8 +105,8 @@ How Phoenix handles Zelle payments:
 ### Payment Limits
 
 Current Phoenix/Zelle limits:
-- **Minimum**: $10 per transaction
-- **Maximum**: $5,000 per transaction
+- **Minimum**: $1 per transaction
+- **Maximum**: $1,000 per transaction
 - **Daily**: Varies by customer's bank
 - **Monthly**: No additional limits
 
@@ -149,63 +137,17 @@ Shor automatically selects the best provider based on:
 3. **Location**: Geographic availability
 4. **Performance**: Current success rates
 5. **Cost**: Lowest fees for merchant
+6. **Available Liquidity**: Provider's current capacity
 
-### Manual Override
-
-In some cases, you can specify preferred providers:
-```json
-{
-  "preferred_providers": ["phoenix", "venmo"],
-  "fallback_provider": "wise",
-  "block_providers": ["paypal"]
-}
-```
 
 ## Compliance and Security
 
-### AML/KYC Requirements
+### AML Requirements
 
 All providers must meet:
-- **Identity Verification**: Know Your Customer
 - **Transaction Monitoring**: Anti-Money Laundering
 - **Sanctions Screening**: OFAC compliance
-- **Reporting**: Suspicious activity reports
-
-### Data Security
-
-<CardGroup cols={2}>
-  <Card title="Encryption" icon="lock">
-    All data encrypted in transit and at rest
-  </Card>
-  <Card title="PCI Compliance" icon="shield-check">
-    Providers maintain PCI-DSS compliance
-  </Card>
-  <Card title="Privacy" icon="user-secret">
-    Customer data never stored by Shor
-  </Card>
-  <Card title="Audit Trail" icon="clipboard-list">
-    Complete transaction history for compliance
-  </Card>
-</CardGroup>
-
-## Provider-Specific Features
-
-### Phoenix Unique Features
-
-<AccordionGroup>
-  <Accordion title="Instant Verification">
-    Real-time payment confirmation through banking APIs
-  </Accordion>
-  <Accordion title="Smart Matching">
-    AI-powered payment matching for high accuracy
-  </Accordion>
-  <Accordion title="Partial Payments">
-    Handle split payments from same customer
-  </Accordion>
-  <Accordion title="Refund Support">
-    Automated refund processing (coming soon)
-  </Accordion>
-</AccordionGroup>
+- **Reporting**: Suspicious activity reports=
 
 ## Handling Provider Issues
 
@@ -238,31 +180,6 @@ All providers must meet:
 3. **Unique Identifiers**: Use provided reference codes
 4. **Timely Processing**: Encourage immediate payment
 5. **Customer Support**: Be ready to assist
-
-### Customer Communication
-
-Templates for different providers:
-
-<Tabs>
-  <Tab title="Zelle Instructions">
-    ```
-    Pay with Zelle:
-    1. Open your banking app
-    2. Select "Send with Zelle"
-    3. Send exactly $[AMOUNT] to [EMAIL]
-    4. Add this code to memo: [CODE]
-    5. Confirm within 30 minutes
-    ```
-  </Tab>
-  <Tab title="Coming Soon">
-    ```
-    Venmo/Wise payments coming soon!
-    Currently accepting Zelle payments.
-    
-    Questions? Contact support@shorpay.com
-    ```
-  </Tab>
-</Tabs>
 
 ## Provider Fees
 
@@ -299,26 +216,6 @@ Have a specific provider request?
 3. Estimated volume
 4. Geographic needs
 
-## Provider API
-
-### Checking Provider Status
-
-```javascript
-// Get available providers for amount/location
-const providers = await shor.getAvailableProviders({
-  amount: 100.00,
-  country: 'US',
-  currency: 'USD'
-});
-```
-
-### Provider Webhooks
-
-Receive updates on provider events:
-- Provider availability changes
-- New provider launches
-- Limit updates
-- Performance metrics
 
 ## Troubleshooting
 
@@ -326,14 +223,8 @@ Receive updates on provider events:
   <FAQItem question="Why is only Zelle available?">
     We're starting with Zelle for US customers and actively adding more providers. Venmo and Wise coming soon!
   </FAQItem>
-  <FAQItem question="Can I disable certain providers?">
-    Yes, you can configure provider preferences in your settings once multiple providers are available.
-  </FAQItem>
   <FAQItem question="What if a provider is down?">
     Shor automatically routes to available providers. You'll be notified of any extended outages.
-  </FAQItem>
-  <FAQItem question="How are exchange rates determined?">
-    Providers use real-time market rates for fiat-to-USDC conversion, ensuring fair and transparent pricing.
   </FAQItem>
 </FAQ>
 

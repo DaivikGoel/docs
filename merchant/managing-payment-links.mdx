@@ -24,8 +24,6 @@ Each payment link card shows:
 - **Amount**: Fixed amount or "Variable"
 - **Status**: Active/Inactive indicator
 - **Created**: Date of creation
-- **Transactions**: Number of successful payments
-- **Revenue**: Total collected through this link
 
 ## Organizing Your Links
 
@@ -62,21 +60,12 @@ Develop a consistent naming system:
 Find links quickly using:
 - **Search bar**: Search by title or description
 - **Status filter**: Show only active or inactive
-- **Date filter**: Created within specific timeframe
-- **Amount filter**: Fixed vs variable amounts
 
 ## Bulk Operations
 
-### Managing Multiple Links
-
-<Info>
-Select multiple links to perform bulk actions like activating, deactivating, or exporting.
-</Info>
-
-Common bulk operations:
-1. **Bulk Activate/Deactivate**: For seasonal campaigns
-2. **Bulk Export**: Download link details as CSV
-3. **Bulk Delete**: Remove unused links (coming soon)
+<Note>
+Bulk operations are coming soon. Currently, manage links individually through the dashboard.
+</Note>
 
 ## Link Status Management
 
@@ -116,11 +105,11 @@ Consider deactivating links when:
 ⚠️ **Conditionally Editable**:
 - Amount (only if no transactions)
 - Fee structure (only if no transactions)
+- Active status
 
 ❌ **Never Editable**:
 - Payment link ID
 - Smart contract address
-- Completed transaction data
 
 ### Edit Best Practices
 
@@ -131,42 +120,18 @@ Consider deactivating links when:
 
 ## Link Performance Tracking
 
-### Key Metrics
-
-Monitor these metrics for each link:
-
-<CardGroup cols={2}>
-  <Card title="Conversion Rate" icon="percentage">
-    Views that result in payments
-  </Card>
-  <Card title="Average Order Value" icon="dollar-sign">
-    Average payment amount
-  </Card>
-  <Card title="Total Revenue" icon="chart-line">
-    Cumulative payments received
-  </Card>
-  <Card title="Active Period" icon="calendar">
-    How long the link has been active
-  </Card>
-</CardGroup>
-
-### Performance Analysis
-
-Identify your best performers:
-1. Sort by revenue or transactions
-2. Compare conversion rates
-3. Analyze customer patterns
-4. Optimize underperformers
+<Note>
+Detailed analytics and performance metrics are coming soon. Currently, you can view transactions for each link in the transactions section.
+</Note>
 
 ## Advanced Management Strategies
 
-### Link Templates
+### Link Organization
 
-Create templates for common use cases:
-- Standard products
-- Recurring services
-- Seasonal promotions
-- Event tickets
+Best practices for organizing links:
+- Use consistent naming conventions
+- Group similar products together
+- Archive old promotional links
 
 ### A/B Testing
 
@@ -212,7 +177,7 @@ Protect your payment links:
 ### Access Control
 
 <Warning>
-Only team members with appropriate permissions should manage payment links. Use role-based access control in your organization.
+Currently, payment links are managed at the account level. Team management features are coming soon.
 </Warning>
 
 ## Troubleshooting Common Issues
@@ -234,24 +199,16 @@ Improve conversions by:
 - Simplifying the payment process
 - Testing different fee structures
 
-## Integration with Other Tools
+## Integration Options
 
-### CRM Integration
-- Track customer payment history
-- Segment based on purchase behavior
-- Automate follow-up communications
+### Current Integrations
+- **Webhooks**: Receive real-time transaction notifications
+- **Transaction Export**: Download transaction data for accounting
 
-### Analytics Tools
-- Connect to Google Analytics
-- Track conversion sources
-- Monitor customer journey
-- Optimize marketing spend
-
-### Accounting Software
-- Export transaction data
-- Reconcile payments
-- Generate financial reports
-- Track tax obligations
+### Coming Soon
+- CRM integrations
+- Analytics tools
+- Accounting software connections
 
 ## Best Practices Checklist
 
@@ -259,11 +216,8 @@ Improve conversions by:
 - [ ] Review inactive links monthly
 - [ ] Update images and descriptions
 - [ ] Check for broken image links
-- [ ] Archive obsolete links
-- [ ] Analyze performance metrics
+- [ ] Deactivate obsolete links
 - [ ] Test payment flow quarterly
-- [ ] Update security settings
-- [ ] Backup link configurations
 
 ## Next Steps
 

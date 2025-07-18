@@ -13,9 +13,9 @@ This guide provides a detailed walkthrough of the entire payment process, from r
 
 <Checklist>
 - [ ] Payment link from merchant
-- [ ] Access to your banking app (with Zelle)
+- [ ] Access to your online banking (for account connection)
 - [ ] Email address for receipt
-- [ ] Exact payment amount
+- [ ] Bank account with sufficient funds
 </Checklist>
 
 ### Quick Checks
@@ -73,82 +73,72 @@ Click "Pay Now" and provide:
 
 Choose your payment method:
 
-<Card title="Zelle (Available Now)" icon="building-columns">
-  - Instant bank transfers
-  - Supported by major US banks
-  - No additional Zelle fees
-  - Processes in 2-5 minutes
+<Card title="Bank Transfer (ACH)" icon="building-columns">
+  - Secure bank account connection via Teller
+  - Supported by most US banks
+  - Automatic transfer from your account
+  - Processes within minutes
 </Card>
 
 <Info>
-More payment methods coming soon! Currently, Zelle is the primary option for US customers.
+Payments are processed through our secure payment partner Phoenix, which handles the conversion from USD to USDC.
 </Info>
 
-### Step 4: Payment Instructions
+### Step 4: Connect Your Bank Account
 
-After selecting Zelle, you'll receive:
+After clicking "Pay Now", you'll see a secure payment window:
 
-```
-Pay via Zelle:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Recipient: payments@shorpay.com
-Amount: $125.00 (exact amount required)
-Reference: SHR-A7B9-X2M4
-
-IMPORTANT: Include reference in memo!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
+1. **Phoenix Payment Interface** opens in a secure frame
+2. **Connect Bank Account** button appears
+3. **Teller Integration** allows you to securely link your bank
+4. **Select your bank** from the list of supported institutions
+5. **Log in securely** using your online banking credentials
 
 <Warning>
-Copy these details exactly. The reference code is crucial for matching your payment.
+Your banking credentials are never shared with Shor or the merchant. Teller uses bank-level encryption and security.
 </Warning>
 
-### Step 5: Make Zelle Payment
+### Step 5: Complete Bank Transfer
 
-Open your banking app:
+Once your bank is connected:
 
 <Steps>
-  <Step title="Find Zelle">
-    Look for "Send with Zelle" or Zelle icon in your banking app
+  <Step title="Select Account">
+    Choose which bank account to pay from
   </Step>
   
-  <Step title="Add Recipient">
-    - Enter the exact email provided
-    - May show as "Shor Payments" or similar
+  <Step title="Review Amount">
+    - Verify the payment amount
+    - Check any applicable fees
+    - See total to be debited
   </Step>
   
-  <Step title="Enter Amount">
-    - Type the EXACT amount shown
-    - Don't round up or down
-    - Include cents (e.g., $125.00)
+  <Step title="Authorize Transfer">
+    - Review transfer details
+    - Confirm the payment
+    - May require additional bank verification
   </Step>
   
-  <Step title="Add Reference">
-    - Find memo/note field
-    - Enter the reference code
-    - Double-check accuracy
-  </Step>
-  
-  <Step title="Send Payment">
-    - Review all details
-    - Confirm and send
-    - Note confirmation number
+  <Step title="Processing">
+    - Phoenix initiates the ACH transfer
+    - Converts USD to USDC
+    - Sends to merchant's wallet
   </Step>
 </Steps>
 
-### Step 6: Confirm on Shor
+### Step 6: Payment Processing
 
-Return to the Shor payment page:
+After authorizing the transfer:
 
-1. Click "I've Completed Payment"
-2. Wait for processing (usually 2-5 minutes)
-3. Don't close the page yet!
+1. Stay on the payment page
+2. Phoenix processes your payment automatically
+3. You'll see real-time status updates
 
-You'll see a processing indicator:
+The payment window shows:
 ```
 Processing your payment...
-This usually takes 2-5 minutes
-Please don't close this page
+Converting USD to USDC
+Sending to merchant wallet
 ```
 
 ### Step 7: Payment Confirmation
@@ -179,34 +169,34 @@ Once processed, you'll see:
 ### What Happens Behind the Scenes
 
 <Timeline>
-  <TimelineItem title="You Send Zelle Payment" time="0:00">
-    Payment sent from your bank to Shor's payment processor
+  <TimelineItem title="Bank Account Connected" time="0:00">
+    You securely connect your bank through Teller
   </TimelineItem>
-  <TimelineItem title="Payment Detected" time="0:30">
-    System matches your payment using reference code
+  <TimelineItem title="ACH Transfer Initiated" time="0:30">
+    Phoenix initiates transfer from your bank account
   </TimelineItem>
-  <TimelineItem title="Conversion Initiated" time="1:00">
-    Your USD payment is converted to USDC cryptocurrency
+  <TimelineItem title="USD to USDC Conversion" time="1:00">
+    Phoenix converts your USD payment to USDC
   </TimelineItem>
   <TimelineItem title="Blockchain Transaction" time="2:00">
-    USDC sent to merchant's smart contract
+    USDC sent to merchant's wallet on Base network
   </TimelineItem>
   <TimelineItem title="Confirmation" time="3:00">
     All parties notified of successful payment
   </TimelineItem>
 </Timeline>
 
-### Why Reference Codes Matter
+### How Payments Are Tracked
 
-The reference code (e.g., SHR-A7B9-X2M4) is critical because:
-- Links your payment to your order
-- Ensures accurate delivery
-- Enables automatic processing
-- Prevents payment mix-ups
+Your payment is automatically tracked through:
+- **Order ID**: Created when you initiate payment
+- **Bank Connection**: Linked to your specific transaction
+- **Blockchain Transaction**: Verifiable on Base network
+- **Email Confirmation**: Sent to your provided email
 
-<Warning>
-Without the correct reference code, your payment may be delayed or require manual intervention.
-</Warning>
+<Info>
+All payments are automatically matched and processed - no manual reference codes needed!
+</Info>
 
 ## Common Scenarios
 
@@ -249,35 +239,46 @@ For donations or custom amounts:
 ### For Smooth Transactions
 
 ✅ **Do:**
-- Pay exact amounts
-- Include reference codes
-- Complete quickly (within 30 min)
+- Use a secure internet connection
+- Have your bank login ready
+- Complete the process in one session
 - Save confirmations
 - Check email for receipt
 
 ❌ **Don't:**
-- Round payment amounts
-- Skip the reference code
-- Use multiple payments
-- Close page while processing
-- Share payment details
+- Share your bank credentials
+- Use public WiFi for payments
+- Refresh during processing
+- Close the payment window early
+- Make multiple payment attempts
 
-### Banking App Tips
+### Supported Banks
 
-Different banks, same process:
+Teller supports most major US banks:
 
 <AccordionGroup>
-  <Accordion title="Bank of America">
-    Transfers → Zelle → Send Money → Enter Details
+  <Accordion title="Major Banks">
+    - Bank of America
+    - Chase
+    - Wells Fargo
+    - US Bank
+    - PNC Bank
   </Accordion>
-  <Accordion title="Chase">
-    Pay & Transfer → Zelle → Send Money → Add Recipient
+  <Accordion title="Regional Banks">
+    - TD Bank
+    - Regions Bank
+    - Fifth Third Bank
+    - KeyBank
+    - And many more...
   </Accordion>
-  <Accordion title="Wells Fargo">
-    Transfer & Pay → Send Money with Zelle → Enter Info
+  <Accordion title="Credit Unions">
+    Most credit unions are supported through Teller's network
   </Accordion>
-  <Accordion title="Other Banks">
-    Look for Zelle logo or "Send Money" option
+  <Accordion title="Online Banks">
+    - Ally Bank
+    - Capital One
+    - Discover Bank
+    - And others
   </Accordion>
 </AccordionGroup>
 

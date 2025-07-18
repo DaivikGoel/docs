@@ -15,7 +15,7 @@ Shor simplifies crypto payments by connecting traditional payment methods with b
     - Payment amount (or leave open for customer to specify)
     - Title and description
     - Product image (optional)
-    - Enters their crypto wallet address
+    - Their USDC wallet address (Base network compatible)
     - Fee handling preference
 
   </Step>
@@ -30,9 +30,10 @@ Shor simplifies crypto payments by connecting traditional payment methods with b
   
   <Step title="Customer Makes Payment">
     The customer clicks the link and:
-    - Enters their email
-    - Selects payment method (e.g., Zelle, Venmo)
-    - Completes payment through integrated providers
+    - Enters their email  
+    - Clicks "Pay Now" to open Phoenix Market window
+    - Chooses between Automated or Manual Zelle
+    - Completes payment using their preferred method
   </Step>
   
   <Step title="Smart Contract Distribution">
@@ -64,10 +65,13 @@ Shor simplifies crypto payments by connecting traditional payment methods with b
 - Immutable and trustless execution
 
 ### 3. Payment Providers
-- **Phoenix**: Primary provider for Zelle integration
-- Converts traditional payments to USDC
-- Handles compliance and AML screening
-- More providers coming soon (Venmo, Wise, etc.)
+- **Phoenix Market**: Primary payment processor
+  - Offers both Automated and Manual Zelle options
+  - Converts USD to USDC automatically
+  - Handles compliance and verification
+- **Teller**: Powers the Automated Zelle option
+  - Secure bank account connections
+  - Instant payment processing
 
 ### 4. USDC Settlement
 - All payments settle in USDC (USD Coin)
@@ -97,7 +101,7 @@ Shor simplifies crypto payments by connecting traditional payment methods with b
 Shor charges a small platform fee on each transaction. Merchants can choose to:
 
 - **Absorb the fee**: Customer pays the exact amount, merchant receives amount minus fee
-- **Pass fee to customer**: Coming soon - Customer will pay amount plus fee, merchant receives full amount
+- **Pass fee to customer**: Customer pays amount plus fee, merchant receives full amount
 
 <Note>
 Current fee structure and rates are available in your merchant dashboard settings.
@@ -119,11 +123,11 @@ Currently, Shor operates on:
     - Global customer reach
   </Tab>
   <Tab title="For Customers">
-    - Pay with familiar methods (Zelle, etc.)
+    - Pay with Zelle (automated or manual)
     - No need to own crypto or understand wallets
-    - Secure and private transactions
+    - Choose your comfort level with technology
     - Clear payment confirmations
-    - Protection through smart contracts
+    - Familiar payment experience
   </Tab>
   <Tab title="For Developers">
     Coming soon - Developer tools and APIs for seamless integration
@@ -141,10 +145,10 @@ Currently, Shor operates on:
     Set up your merchant account and create your first payment link
   </Card>
   <Card
-    title="Technical Documentation"
-    icon="code"
-    href="/developer/architecture"
+    title="View Webhook Integration"
+    icon="webhook"
+    href="/merchant/webhooks"
   >
-    Dive deeper into the technical architecture
+    Learn how to integrate webhooks for automated workflows
   </Card>
 </CardGroup>

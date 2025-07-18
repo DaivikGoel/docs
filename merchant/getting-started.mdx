@@ -12,14 +12,18 @@ This guide will walk you through setting up your merchant account and creating y
 Before you begin, you'll need:
 
 <CardGroup cols={2}>
-  <Card title="MetaMask Wallet" icon="wallet">
-    A crypto wallet to receive payments. We recommend MetaMask.
-    [Set up MetaMask →](/essentials/metamask-wallet)
+  <Card title="USDC Wallet Address" icon="wallet">
+    A wallet address that can receive USDC on Base network. Any EVM-compatible wallet works.
+    [Learn about wallets →](/essentials/metamask-wallet)
   </Card>
-  <Card title="Base Network USDC" icon="coins">
-    A small amount of USDC on Base network for gas fees (usually less than $1).
+  <Card title="Email Account" icon="envelope">
+    An email address for account registration and payment notifications.
   </Card>
 </CardGroup>
+
+<Info>
+You don't need USDC for gas fees - Shor handles all blockchain transactions for you!
+</Info>
 
 ## Step-by-Step Setup
 
@@ -31,34 +35,40 @@ Before you begin, you'll need:
     4. Verify your email address
   </Step>
   
-  <Step title="Connect Your Wallet">
-    1. Click "Connect Wallet" in the dashboard
-    2. Select MetaMask (or your preferred wallet)
-    3. Approve the connection request
-    4. Ensure you're on the Base network
+  <Step title="Prepare Your Wallet Address">
+    1. Open your crypto wallet (MetaMask, Coinbase Wallet, etc.)
+    2. Copy your wallet address (0x... format)
+    3. Ensure this wallet supports USDC on Base network
+    4. Keep this address ready for creating payment links
     
     <Warning>
-    Make sure you're connected to Base network, not Ethereum mainnet. Your wallet should show "Base" in the network selector.
+    Double-check your wallet address! Payments sent to incorrect addresses cannot be recovered. You'll enter this address when creating payment links.
     </Warning>
   </Step>
   
-  <Step title="Configure Your Profile">
-    Navigate to Settings in your dashboard and set up:
-    - Business name
-    - Contact information
-    - Default payment settings
-    - Webhook URLs (optional)
+  <Step title="Optional: Configure Webhook">
+    If you want to receive automated notifications when payments are completed:
+    1. Go to Settings → Webhook tab
+    2. Enter your webhook URL
+    3. Click "Save Webhook"
+    4. Use "Test Webhook" to verify it works
+    
+    <Info>
+    This is optional - you can skip this step and add webhooks later if needed.
+    </Info>
   </Step>
   
   <Step title="Create Your First Payment Link">
     1. Click "Create Payment Link" on the dashboard
     2. Fill in the payment details:
        - **Title**: What you're selling
+       - **USDC Wallet Address**: Paste your Base-compatible wallet address
        - **Amount**: Fixed price or customer-specified
        - **Description**: Additional details
        - **Image**: Product or service image (optional)
     3. Choose fee handling (absorb or pass to customer)
-    4. Click "Create Link"
+    4. Review the wallet address warning
+    5. Click "Create Link"
   </Step>
   
   <Step title="Share Your Payment Link">
@@ -79,17 +89,23 @@ When a customer completes a payment:
 3. **Confirmation**: Transaction hash is available for blockchain verification
 4. **Status Updates**: Track payment status from pending to completed
 
-## Smart Contract Setup
+## How Payments Work
 
 <Info>
-Shor automatically deploys a PayoutSplitter smart contract for you. This contract handles the distribution of funds and ensures secure, automated payments.
+When you create a payment link, Shor automatically deploys a smart contract on Base network. This contract receives customer payments and forwards them to your wallet address.
 </Info>
 
-### What This Means
-- Your funds are sent to a smart contract address
-- The contract automatically forwards funds to your wallet
-- You can configure multiple recipients and percentage splits
-- All transactions are transparent and verifiable on-chain
+### Payment Flow
+1. Customer pays using Zelle(and soon Wise, Revolut, CashApp, Venmo)
+2. Payment is converted to USDC
+3. USDC is sent to your payment link's smart contract
+4. Contract automatically forwards funds to your wallet (minus any fees)
+5. You receive USDC directly in your wallet
+
+### Important Notes
+- You don't need to interact with smart contracts directly
+- All transactions are transparent and verifiable on Base network
+- Your wallet address cannot be changed after creating a link
 
 ## Best Practices
 
@@ -132,7 +148,11 @@ Shor automatically deploys a PayoutSplitter smart contract for you. This contrac
   </FAQItem>
   
   <FAQItem question="What if my customer doesn't have crypto?">
-    That's the beauty of Shor! Customers can pay with traditional methods like Zelle, and our payment providers handle the conversion to USDC.
+    That's the beauty of Shor! Customers pay with traditional bank transfers through our secure payment processor Phoenix, which handles the conversion to USDC.
+  </FAQItem>
+  
+  <FAQItem question="Do I need to connect my wallet to Shor?">
+    No! You simply provide your wallet address when creating payment links. There's no wallet connection required - just copy and paste your address.
   </FAQItem>
 </FAQ>
 
