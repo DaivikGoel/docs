@@ -15,11 +15,12 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
+          "pages": [
+            "index",
+            "quickstart",
+            "development",
+            "metamask-wallet"
+          ]
           },
           {
             "group": "Essentials",
