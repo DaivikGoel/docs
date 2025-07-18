@@ -1,0 +1,425 @@
+---
+title: Webhooks
+description: "Automate your workflow with real-time event notifications"
+---
+
+## Overview
+
+Webhooks allow you to receive real-time notifications when events occur in your Shor account. Instead of polling our API, you can register webhook endpoints to be notified instantly about payment events, link updates, and more.
+
+## How Webhooks Work
+
+<Steps>
+  <Step title="Configure Endpoint">
+    Set up an HTTPS endpoint on your server to receive webhook events
+  </Step>
+  <Step title="Register URL">
+    Add your webhook URL in Shor dashboard settings
+  </Step>
+  <Step title="Receive Events">
+    Shor sends POST requests to your endpoint when events occur
+  </Step>
+  <Step title="Process & Respond">
+    Your server processes the event and responds with 200 OK
+  </Step>
+</Steps>
+
+## Available Events
+
+### Payment Events
+
+| Event | Description | When Triggered |
+|-------|-------------|----------------|
+| `payment.initiated` | Payment process started | Customer begins payment |
+| `payment.pending` | Payment awaiting confirmation | Payment sent, awaiting blockchain |
+| `payment.completed` | Payment successfully received | USDC received in wallet |
+| `payment.failed` | Payment failed or cancelled | Payment not completed |
+
+### Link Events
+
+| Event | Description | When Triggered |
+|-------|-------------|----------------|
+| `link.created` | New payment link created | Via dashboard or API |
+| `link.updated` | Payment link modified | Any link property changed |
+| `link.activated` | Link enabled for payments | Status changed to active |
+| `link.deactivated` | Link disabled | Status changed to inactive |
+
+### Account Events
+
+| Event | Description | When Triggered |
+|-------|-------------|----------------|
+| `account.updated` | Account settings changed | Profile or settings modified |
+| `wallet.changed` | Wallet address updated | New wallet connected |
+| `webhook.test` | Test webhook event | Testing endpoint configuration |
+
+## Setting Up Webhooks
+
+### 1. Create Your Endpoint
+
+```javascript
+// Express.js example
+app.post('/webhooks/shor', express.raw({type: 'application/json'}), (req, res) => {
+  const signature = req.headers['x-shor-signature'];
+  const event = JSON.parse(req.body);
+  
+  // Verify signature (see below)
+  if (!verifyWebhookSignature(req.body, signature)) {
+    return res.status(401).send('Invalid signature');
+  }
+  
+  // Process event
+  switch(event.type) {
+    case 'payment.completed':
+      handlePaymentCompleted(event.data);
+      break;
+    case 'payment.failed':
+      handlePaymentFailed(event.data);
+      break;
+    // ... handle other events
+  }
+  
+  // Always respond with 200 OK
+  res.status(200).send('OK');
+});
+```
+
+### 2. Configure in Dashboard
+
+1. Go to Settings → Webhooks
+2. Click "Add Webhook Endpoint"
+3. Enter your HTTPS URL
+4. Select events to receive
+5. Copy your webhook secret
+6. Save configuration
+
+### 3. Verify Webhook Signatures
+
+<Warning>
+Always verify webhook signatures to ensure requests are from Shor and haven't been tampered with.
+</Warning>
+
+```javascript
+const crypto = require('crypto');
+
+function verifyWebhookSignature(payload, signature) {
+  const secret = process.env.SHOR_WEBHOOK_SECRET;
+  
+  const expectedSignature = crypto
+    .createHmac('sha256', secret)
+    .update(payload)
+    .digest('hex');
+  
+  return crypto.timingSafeEqual(
+    Buffer.from(signature),
+    Buffer.from(expectedSignature)
+  );
+}
+```
+
+## Webhook Payload Structure
+
+### Standard Format
+
+All webhooks follow this structure:
+
+```json
+{
+  "id": "evt_1234567890",
+  "type": "payment.completed",
+  "created": 1672531200,
+  "data": {
+    // Event-specific data
+  },
+  "api_version": "2024-01-01"
+}
+```
+
+### Event Data Examples
+
+<Tabs>
+  <Tab title="payment.completed">
+    ```json
+    {
+      "id": "evt_abc123",
+      "type": "payment.completed",
+      "created": 1672531200,
+      "data": {
+        "transaction_id": "ORD-1234-5678-9012",
+        "payment_link_id": "link_xyz789",
+        "amount": "100.00",
+        "usdc_received": "97.10",
+        "fee": "2.90",
+        "customer_email": "customer@example.com",
+        "transaction_hash": "0x123...abc",
+        "payout_wallet": "0x456...def",
+        "timestamp": "2024-01-01T12:00:00Z"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="link.created">
+    ```json
+    {
+      "id": "evt_def456",
+      "type": "link.created",
+      "created": 1672531200,
+      "data": {
+        "link_id": "link_new123",
+        "title": "Premium Service",
+        "amount": "150.00",
+        "fee_handling": "customer_pays",
+        "created_at": "2024-01-01T12:00:00Z",
+        "url": "https://pay.shorpay.com/link/new123"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="payment.failed">
+    ```json
+    {
+      "id": "evt_ghi789",
+      "type": "payment.failed",
+      "created": 1672531200,
+      "data": {
+        "transaction_id": "ORD-fail-123",
+        "payment_link_id": "link_xyz789",
+        "amount": "100.00",
+        "reason": "payment_timeout",
+        "customer_email": "customer@example.com",
+        "timestamp": "2024-01-01T12:00:00Z"
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+### Endpoint Requirements
+
+<CardGroup cols={2}>
+  <Card title="HTTPS Only" icon="lock">
+    Webhooks only sent to secure HTTPS endpoints
+  </Card>
+  <Card title="Fast Response" icon="bolt">
+    Respond within 5 seconds to avoid timeout
+  </Card>
+  <Card title="Idempotency" icon="copy">
+    Handle duplicate events gracefully
+  </Card>
+  <Card title="Queue Processing" icon="layer-group">
+    Process events asynchronously when possible
+  </Card>
+</CardGroup>
+
+### Error Handling
+
+Implement robust error handling:
+
+```javascript
+app.post('/webhooks/shor', async (req, res) => {
+  // Immediately respond
+  res.status(200).send('OK');
+  
+  // Process asynchronously
+  try {
+    await processWebhookEvent(req.body);
+  } catch (error) {
+    console.error('Webhook processing error:', error);
+    // Log to error tracking service
+    // Retry if necessary
+  }
+});
+```
+
+### Retry Logic
+
+Shor implements automatic retries:
+- **Initial attempt**: Immediate
+- **First retry**: After 10 seconds
+- **Second retry**: After 1 minute
+- **Final retry**: After 10 minutes
+- **Max attempts**: 4 total
+
+## Testing Webhooks
+
+### Test Events
+
+Send test events from dashboard:
+1. Go to Webhooks settings
+2. Click "Send Test Event"
+3. Select event type
+4. Click "Send"
+5. Check your endpoint logs
+
+### Local Development
+
+Use ngrok for local testing:
+
+```bash
+# Install ngrok
+npm install -g ngrok
+
+# Expose local server
+ngrok http 3000
+
+# Use the HTTPS URL in Shor dashboard
+# https://abc123.ngrok.io/webhooks/shor
+```
+
+## Common Use Cases
+
+### Automated Fulfillment
+
+```javascript
+async function handlePaymentCompleted(data) {
+  // Verify payment amount
+  if (data.amount >= 100) {
+    // Trigger digital delivery
+    await sendDigitalProduct(data.customer_email);
+    
+    // Update inventory
+    await updateInventory(data.payment_link_id);
+    
+    // Send confirmation email
+    await sendConfirmationEmail(data);
+  }
+}
+```
+
+### CRM Integration
+
+```javascript
+async function syncWithCRM(data) {
+  // Create/update customer record
+  const customer = await crm.upsertCustomer({
+    email: data.customer_email,
+    last_purchase: data.timestamp,
+    total_spent: data.amount
+  });
+  
+  // Log transaction
+  await crm.createTransaction({
+    customer_id: customer.id,
+    amount: data.amount,
+    shor_transaction_id: data.transaction_id
+  });
+}
+```
+
+### Accounting Automation
+
+```javascript
+async function recordTransaction(data) {
+  // Create invoice
+  const invoice = await accounting.createInvoice({
+    amount: data.amount,
+    fee: data.fee,
+    net: data.usdc_received,
+    reference: data.transaction_id
+  });
+  
+  // Mark as paid
+  await accounting.markPaid(invoice.id, {
+    payment_method: 'crypto_usdc',
+    transaction_hash: data.transaction_hash
+  });
+}
+```
+
+## Security Considerations
+
+### Webhook Security Checklist
+
+✅ Security measures:
+- [ ] Verify all webhook signatures
+- [ ] Use HTTPS endpoints only
+- [ ] Implement request timeouts
+- [ ] Log all webhook events
+- [ ] Monitor for unusual patterns
+- [ ] Rotate webhook secrets periodically
+- [ ] Validate event data structure
+- [ ] Implement rate limiting
+
+### IP Whitelisting
+
+<Info>
+Shor webhooks originate from these IP ranges:
+- Production: `52.14.0.0/16`
+- Backup: `35.180.0.0/16`
+
+Contact support for latest IP list.
+</Info>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Webhooks Not Received">
+    - Verify HTTPS endpoint is accessible
+    - Check firewall rules
+    - Confirm webhook is active in dashboard
+    - Review server logs for errors
+  </Accordion>
+  <Accordion title="Signature Verification Failing">
+    - Ensure using correct webhook secret
+    - Verify raw body is used for signature
+    - Check for encoding issues
+    - Confirm signature header name
+  </Accordion>
+  <Accordion title="Duplicate Events">
+    - Implement idempotency using event ID
+    - Store processed events in database
+    - Return 200 OK for already processed
+  </Accordion>
+  <Accordion title="Timeout Errors">
+    - Respond immediately with 200 OK
+    - Process events asynchronously
+    - Optimize endpoint performance
+    - Consider message queue
+  </Accordion>
+</AccordionGroup>
+
+## Webhook FAQ
+
+<FAQ>
+  <FAQItem question="Can I have multiple webhook endpoints?">
+    Yes, you can configure multiple endpoints for different events or environments.
+  </FAQItem>
+  <FAQItem question="What happens if my endpoint is down?">
+    Shor will retry failed webhooks up to 4 times over 10 minutes. You can also manually replay events.
+  </FAQItem>
+  <FAQItem question="How do I update my webhook secret?">
+    Generate a new secret in dashboard settings. Update your code before saving to avoid downtime.
+  </FAQItem>
+  <FAQItem question="Can I filter which events I receive?">
+    Yes, select specific events when configuring your webhook endpoint in the dashboard.
+  </FAQItem>
+</FAQ>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Explore our REST API
+  </Card>
+  <Card
+    title="Analytics"
+    icon="chart-line"
+    href="/merchant/analytics"
+  >
+    Track webhook performance
+  </Card>
+  <Card
+    title="Developer Guide"
+    icon="book"
+    href="/developer/webhooks"
+  >
+    Advanced webhook patterns
+  </Card>
+</CardGroup>

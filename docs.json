@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Shor Documentation",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,25 +11,61 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Overview",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "how-it-works"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Setup Guides",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "essentials/metamask-wallet",
+              "merchant/getting-started",
+              "customer/getting-started"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Merchant Guide",
+        "groups": [
+          {
+            "group": "Dashboard",
+            "pages": [
+              "merchant/overview",
+              "merchant/creating-payment-links",
+              "merchant/managing-payment-links",
+              "merchant/viewing-transactions",
+              "merchant/settings"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "merchant/fee-handling",
+              "merchant/payment-providers",
+              "merchant/webhooks",
+              "merchant/analytics"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Customer Guide",
+        "groups": [
+          {
+            "group": "Making Payments",
+            "pages": [
+              "customer/overview",
+              "customer/payment-process",
+              "customer/payment-methods",
+              "customer/transaction-status",
+              "customer/troubleshooting"
             ]
           }
         ]
@@ -38,18 +74,57 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Introduction",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/errors"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Payment Links",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/payment-links/create",
+              "api-reference/payment-links/list",
+              "api-reference/payment-links/update",
+              "api-reference/payment-links/delete"
+            ]
+          },
+          {
+            "group": "Transactions",
+            "pages": [
+              "api-reference/transactions/list",
+              "api-reference/transactions/get",
+              "api-reference/transactions/webhook"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer Guide",
+        "groups": [
+          {
+            "group": "Technical Overview",
+            "pages": [
+              "developer/architecture",
+              "developer/tech-stack",
+              "developer/smart-contracts"
+            ]
+          },
+          {
+            "group": "Integration",
+            "pages": [
+              "developer/webhooks",
+              "developer/api-integration",
+              "developer/sdk"
+            ]
+          },
+          {
+            "group": "Self-Hosting",
+            "pages": [
+              "developer/deployment",
+              "developer/configuration",
+              "developer/security"
             ]
           }
         ]
@@ -58,19 +133,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Shor App",
+          "href": "https://app.shorpay.com",
+          "icon": "window"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "GitHub",
+          "href": "https://github.com/shorpay",
+          "icon": "github"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:support@shorpay.com",
+          "icon": "envelope"
         }
       ]
     }
@@ -83,20 +158,20 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@shorpay.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://app.shorpay.com"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/shorpay",
+      "github": "https://github.com/shorpay",
+      "linkedin": "https://linkedin.com/company/shorpay"
     }
   }
 }

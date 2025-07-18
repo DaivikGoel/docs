@@ -1,0 +1,393 @@
+---
+title: Troubleshooting Guide
+description: "Solutions for common payment issues"
+---
+
+## Quick Solutions
+
+Having trouble with your payment? This guide covers the most common issues and their solutions.
+
+## Common Issues
+
+### Payment Not Processing
+
+<AccordionGroup>
+  <Accordion title="Payment stuck on 'Pending' for over 10 minutes">
+    **Possible Causes:**
+    - High transaction volume
+    - Bank processing delay
+    - Missing or incorrect reference code
+    
+    **Solutions:**
+    1. Verify payment was sent successfully in your bank app
+    2. Confirm exact amount was sent (no rounding)
+    3. Check reference code was included in memo
+    4. Wait 5 more minutes
+    5. Contact support@shorpay.com with details
+    
+    **Do NOT:** Send another payment while pending!
+  </Accordion>
+  
+  <Accordion title="Page shows 'Payment Failed'">
+    **Possible Causes:**
+    - Incorrect payment amount
+    - Missing reference code
+    - Payment timeout (over 30 minutes)
+    - Technical issue
+    
+    **Solutions:**
+    1. Check your bank - was payment sent?
+    2. If no payment sent: Try again with correct details
+    3. If payment was sent: Contact support immediately
+    4. Include screenshot of failure message
+  </Accordion>
+  
+  <Accordion title="Can't find Zelle recipient">
+    **Possible Causes:**
+    - Typo in email/phone
+    - Bank hasn't updated recipient list
+    - First time sending to this recipient
+    
+    **Solutions:**
+    1. Copy/paste recipient email exactly
+    2. Try phone number if provided
+    3. Remove and re-add recipient
+    4. Try Zelle standalone app
+    5. Contact your bank's support
+  </Accordion>
+</AccordionGroup>
+
+### Before Payment Issues
+
+<AccordionGroup>
+  <Accordion title="Payment link won't open">
+    **Solutions:**
+    1. Copy full link URL and paste in browser
+    2. Try different browser (Chrome, Safari, Firefox)
+    3. Clear browser cache and cookies
+    4. Disable ad blockers temporarily
+    5. Try on mobile device
+    6. Ask merchant to resend link
+  </Accordion>
+  
+  <Accordion title="Amount seems incorrect">
+    **What to Check:**
+    - Is processing fee included? (if customer pays)
+    - Is this the correct currency? (USD)
+    - Did merchant update the price?
+    
+    **Solutions:**
+    1. Contact merchant to verify amount
+    2. Check if fees are being passed to you
+    3. Look for fee disclosure on page
+    4. Request itemized invoice
+  </Accordion>
+  
+  <Accordion title="Page asks for crypto wallet">
+    **Important:** You should NEVER need a crypto wallet as a customer!
+    
+    **Solutions:**
+    1. Verify you're on correct site (pay.shorpay.com)
+    2. Check for phishing attempts
+    3. Contact merchant for correct link
+    4. Report suspicious activity to support
+  </Accordion>
+</AccordionGroup>
+
+### During Payment Issues
+
+<AccordionGroup>
+  <Accordion title="Zelle says limit reached">
+    **Daily/Weekly Limits Hit:**
+    1. Check your bank's Zelle limits
+    2. Wait for limit reset (usually midnight)
+    3. Ask merchant about splitting payment
+    4. Try from different bank account
+    5. Contact bank to increase limits
+    
+    **Transaction Limits:**
+    - Varies by bank ($500-$5000 daily)
+    - New recipients may have lower limits
+    - Business accounts often higher
+  </Accordion>
+  
+  <Accordion title="Can't add reference code">
+    **Where to Add Reference:**
+    - Look for "Memo" field
+    - Sometimes called "Note" or "Message"
+    - May be on confirmation screen
+    
+    **If No Memo Field:**
+    1. Check next screen in process
+    2. Try Zelle standalone app
+    3. Contact support with screenshot
+    4. We can manually match if needed
+  </Accordion>
+  
+  <Accordion title="Accidentally sent wrong amount">
+    **Sent Too Much:**
+    1. Complete current transaction
+    2. Contact merchant for refund of excess
+    3. Save all confirmations
+    
+    **Sent Too Little:**
+    1. Do NOT send another payment yet
+    2. Contact support@shorpay.com
+    3. May need to start new transaction
+    4. Original payment may be refunded
+  </Accordion>
+</AccordionGroup>
+
+### After Payment Issues
+
+<AccordionGroup>
+  <Accordion title="No confirmation email">
+    **Check These First:**
+    1. Spam/Junk folder
+    2. Correct email was entered
+    3. Wait 10 minutes
+    4. Check promotions/other tabs
+    
+    **Still No Email:**
+    1. Take screenshot of success page
+    2. Note transaction ID if shown
+    3. Contact support with details
+    4. Check with merchant directly
+  </Accordion>
+  
+  <Accordion title="Merchant says payment not received">
+    **Verify Payment Success:**
+    1. Check Shor confirmation page
+    2. Look for email receipt
+    3. Verify blockchain transaction
+    
+    **If Confirmed on Shor:**
+    1. Share transaction ID with merchant
+    2. Provide blockchain link
+    3. Forward confirmation email
+    4. Allow time for merchant to check
+  </Accordion>
+  
+  <Accordion title="Need a refund">
+    **Important:** Blockchain transactions cannot be reversed
+    
+    **Refund Process:**
+    1. Contact merchant directly
+    2. Follow their refund policy
+    3. Merchant processes refund separately
+    4. May receive via different method
+    
+    Shor cannot process refunds - merchant must initiate
+  </Accordion>
+</AccordionGroup>
+
+## Error Messages
+
+### Understanding Error Codes
+
+<Tabs>
+  <Tab title="TIMEOUT_ERROR">
+    **Meaning**: Payment wasn't completed within 30 minutes
+    
+    **Fix**: Start a new payment transaction
+  </Tab>
+  
+  <Tab title="AMOUNT_MISMATCH">
+    **Meaning**: Payment amount doesn't match order
+    
+    **Fix**: Send exact amount shown (including cents)
+  </Tab>
+  
+  <Tab title="REFERENCE_MISSING">
+    **Meaning**: No reference code in payment memo
+    
+    **Fix**: Always include the code provided
+  </Tab>
+  
+  <Tab title="DUPLICATE_PAYMENT">
+    **Meaning**: Payment already processed for this order
+    
+    **Fix**: Check if first payment succeeded
+  </Tab>
+</Tabs>
+
+## Prevention Tips
+
+### Before Starting Payment
+
+✅ **Checklist:**
+- [ ] Verify merchant is legitimate
+- [ ] Confirm payment amount
+- [ ] Have banking app ready
+- [ ] Can complete in 30 minutes
+- [ ] Understand fee structure
+
+### During Payment
+
+✅ **Best Practices:**
+- Copy reference code exactly
+- Double-check recipient details
+- Send exact amount (no rounding)
+- Complete promptly
+- Keep page open
+
+### After Payment
+
+✅ **Important Steps:**
+- Save confirmation screenshot
+- Check for email receipt
+- Note transaction ID
+- Save blockchain link
+- Keep records
+
+## Technical Issues
+
+### Browser Problems
+
+<CardGroup cols={2}>
+  <Card title="Clear Cache" icon="broom">
+    Settings → Privacy → Clear browsing data
+  </Card>
+  <Card title="Try Incognito" icon="user-secret">
+    Open private/incognito window
+  </Card>
+  <Card title="Update Browser" icon="download">
+    Use latest version of Chrome/Safari/Firefox
+  </Card>
+  <Card title="Disable Extensions" icon="puzzle-piece">
+    Turn off ad blockers and extensions
+  </Card>
+</CardGroup>
+
+### Mobile Issues
+
+Common mobile solutions:
+1. **Force close and reopen app**
+2. **Check internet connection**
+3. **Try mobile browser instead**
+4. **Update to latest app version**
+5. **Restart device if needed**
+
+## When to Contact Support
+
+### Contact Support If:
+
+- Payment pending over 15 minutes
+- Payment sent but showing failed
+- Unable to complete payment
+- Technical errors persist
+- Need transaction proof
+- Suspicious activity
+
+### Information to Provide
+
+<Checklist>
+- [ ] Payment link URL
+- [ ] Transaction amount
+- [ ] Time of payment attempt
+- [ ] Reference code used
+- [ ] Error messages (screenshots)
+- [ ] Payment method details
+- [ ] Your email address
+</Checklist>
+
+### How to Contact
+
+**Email**: support@shorpay.com
+
+**Subject Line Examples**:
+- "Payment Stuck Pending - Help Needed"
+- "Failed Transaction but Payment Sent"
+- "Technical Error During Payment"
+
+**Response Time**: Usually within 24 hours
+
+## Security Concerns
+
+### Identifying Legitimate Links
+
+✅ **Real Shor Links**:
+- Start with `https://pay.shorpay.com/`
+- Show merchant information
+- Never ask for passwords
+- Don't require crypto wallets
+
+❌ **Suspicious Signs**:
+- Misspelled URLs
+- Requests for private keys
+- Asks for bank passwords
+- Unusual payment methods
+
+### If You Suspect Fraud
+
+1. **Don't complete payment**
+2. **Screenshot everything**
+3. **Contact merchant directly**
+4. **Report to support@shorpay.com**
+5. **Alert your bank if needed**
+
+## Quick Reference
+
+### Status Guide
+
+| Status | Normal Duration | Action Required |
+|--------|----------------|-----------------|
+| Initiated | Immediate | Complete payment |
+| Pending | 2-5 minutes | Wait |
+| Completed | Final | Save receipt |
+| Failed | Final | Check & retry |
+
+### Support Checklist
+
+Before contacting support, try:
+1. ✓ Wait 10 minutes total
+2. ✓ Verify payment details
+3. ✓ Check spam folder
+4. ✓ Try different browser
+5. ✓ Screenshot errors
+
+## Additional Resources
+
+<CardGroup cols={3}>
+  <Card
+    title="Payment Guide"
+    icon="book"
+    href="/customer/payment-process"
+  >
+    Step-by-step instructions
+  </Card>
+  <Card
+    title="Check Status"
+    icon="magnifying-glass"
+    href="/customer/transaction-status"
+  >
+    Understand payment states
+  </Card>
+  <Card
+    title="Contact Support"
+    icon="envelope"
+    href="mailto:support@shorpay.com"
+  >
+    Get personalized help
+  </Card>
+</CardGroup>
+
+## FAQ
+
+<FAQ>
+  <FAQItem question="Is it safe to contact support?">
+    Yes! Official support is support@shorpay.com. We'll never ask for passwords or private information.
+  </FAQItem>
+  
+  <FAQItem question="How long do I wait before contacting support?">
+    Wait 10-15 minutes for pending payments. Contact immediately if you see errors or have security concerns.
+  </FAQItem>
+  
+  <FAQItem question="Can support reverse my payment?">
+    No, blockchain payments can't be reversed. Refunds must go through the merchant.
+  </FAQItem>
+  
+  <FAQItem question="What if I can't reach the merchant?">
+    We can help verify payment completion and provide transaction proof for your records.
+  </FAQItem>
+</FAQ>

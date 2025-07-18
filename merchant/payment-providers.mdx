@@ -1,0 +1,364 @@
+---
+title: Payment Providers
+description: "Understanding payment methods and providers on Shor"
+---
+
+## Overview
+
+Shor integrates with multiple payment providers to offer your customers familiar payment methods while you receive USDC. Each provider handles the conversion from traditional payments to cryptocurrency.
+
+## Current Providers
+
+### Phoenix (Primary Provider)
+
+<Card title="Phoenix" icon="phoenix-framework">
+  **Supported Methods**: Zelle
+  **Coverage**: United States
+  **Settlement**: 2-5 minutes
+  **Features**: Instant verification, AML screening
+</Card>
+
+Phoenix is our primary payment provider, offering:
+- **Zelle Integration**: Direct bank transfers
+- **Fast Settlement**: Usually under 5 minutes
+- **Compliance Built-in**: Automatic AML/KYC
+- **High Success Rates**: 95%+ completion
+
+### Coming Soon
+
+<CardGroup cols={3}>
+  <Card title="Venmo" icon="venmo">
+    Popular peer-to-peer payments
+    Coming Q1 2025
+  </Card>
+  <Card title="Wise" icon="globe">
+    International transfers
+    Coming Q2 2025
+  </Card>
+  <Card title="PayPal" icon="paypal">
+    Global payment network
+    Under evaluation
+  </Card>
+</CardGroup>
+
+## How Providers Work
+
+### Payment Flow
+
+<Steps>
+  <Step title="Customer Selection">
+    Customer chooses their preferred payment method on your payment link
+  </Step>
+  <Step title="Provider Routing">
+    Shor routes to the appropriate payment provider based on:
+    - Payment method selected
+    - Amount
+    - Geographic location
+    - Availability
+  </Step>
+  <Step title="Traditional Payment">
+    Customer completes payment using their familiar method:
+    - Zelle transfer
+    - Venmo payment
+    - Bank transfer
+  </Step>
+  <Step title="Conversion">
+    Provider converts traditional payment to USDC:
+    - Receives fiat payment
+    - Purchases USDC
+    - Sends to smart contract
+  </Step>
+  <Step title="Settlement">
+    USDC distributed to your wallet via smart contract
+  </Step>
+</Steps>
+
+## Provider Features Comparison
+
+| Feature | Phoenix (Zelle) | Venmo (Soon) | Wise (Soon) |
+|---------|----------------|--------------|-------------|
+| **Countries** | USA | USA | 80+ |
+| **Speed** | 2-5 min | 5-10 min | 1-24 hours |
+| **Limits** | $500-5000/day | $5000/week | $50k/transfer |
+| **Fees** | Included | Included | Included |
+| **Mobile** | ✓ | ✓ | ✓ |
+| **Desktop** | ✓ | ✓ | ✓ |
+
+## Phoenix Deep Dive
+
+### Zelle Integration
+
+How Phoenix handles Zelle payments:
+
+<Tabs>
+  <Tab title="Customer Experience">
+    1. Enters payment amount
+    2. Provides email for receipt
+    3. Receives Zelle instructions
+    4. Sends payment via their bank
+    5. Sees confirmation in minutes
+  </Tab>
+  <Tab title="Behind the Scenes">
+    1. Phoenix generates unique identifier
+    2. Customer adds to Zelle memo
+    3. Phoenix matches payment
+    4. Converts to USDC
+    5. Sends to smart contract
+  </Tab>
+  <Tab title="Security Features">
+    - End-to-end encryption
+    - AML/KYC screening
+    - Fraud detection
+    - Transaction monitoring
+    - Compliance reporting
+  </Tab>
+</Tabs>
+
+### Payment Limits
+
+Current Phoenix/Zelle limits:
+- **Minimum**: $10 per transaction
+- **Maximum**: $5,000 per transaction
+- **Daily**: Varies by customer's bank
+- **Monthly**: No additional limits
+
+<Warning>
+Limits may vary based on customer's bank policies and account standing.
+</Warning>
+
+### Supported Banks
+
+Phoenix works with all major US banks supporting Zelle:
+- Bank of America
+- Wells Fargo
+- Chase
+- US Bank
+- Capital One
+- PNC
+- TD Bank
+- 1000+ more
+
+## Provider Selection Logic
+
+### Automatic Routing
+
+Shor automatically selects the best provider based on:
+
+1. **Payment Method**: Customer's preference
+2. **Amount**: Within provider limits
+3. **Location**: Geographic availability
+4. **Performance**: Current success rates
+5. **Cost**: Lowest fees for merchant
+
+### Manual Override
+
+In some cases, you can specify preferred providers:
+```json
+{
+  "preferred_providers": ["phoenix", "venmo"],
+  "fallback_provider": "wise",
+  "block_providers": ["paypal"]
+}
+```
+
+## Compliance and Security
+
+### AML/KYC Requirements
+
+All providers must meet:
+- **Identity Verification**: Know Your Customer
+- **Transaction Monitoring**: Anti-Money Laundering
+- **Sanctions Screening**: OFAC compliance
+- **Reporting**: Suspicious activity reports
+
+### Data Security
+
+<CardGroup cols={2}>
+  <Card title="Encryption" icon="lock">
+    All data encrypted in transit and at rest
+  </Card>
+  <Card title="PCI Compliance" icon="shield-check">
+    Providers maintain PCI-DSS compliance
+  </Card>
+  <Card title="Privacy" icon="user-secret">
+    Customer data never stored by Shor
+  </Card>
+  <Card title="Audit Trail" icon="clipboard-list">
+    Complete transaction history for compliance
+  </Card>
+</CardGroup>
+
+## Provider-Specific Features
+
+### Phoenix Unique Features
+
+<AccordionGroup>
+  <Accordion title="Instant Verification">
+    Real-time payment confirmation through banking APIs
+  </Accordion>
+  <Accordion title="Smart Matching">
+    AI-powered payment matching for high accuracy
+  </Accordion>
+  <Accordion title="Partial Payments">
+    Handle split payments from same customer
+  </Accordion>
+  <Accordion title="Refund Support">
+    Automated refund processing (coming soon)
+  </Accordion>
+</AccordionGroup>
+
+## Handling Provider Issues
+
+### Common Scenarios
+
+<Tabs>
+  <Tab title="Payment Delays">
+    **Causes**: Bank processing, high volume
+    **Solution**: Wait 10-15 minutes, check status
+    **Support**: Contact if over 30 minutes
+  </Tab>
+  <Tab title="Failed Matches">
+    **Causes**: Wrong memo, amount mismatch
+    **Solution**: Manual reconciliation
+    **Prevention**: Clear customer instructions
+  </Tab>
+  <Tab title="Provider Downtime">
+    **Frequency**: Very rare (99.9% uptime)
+    **Backup**: Automatic failover to alternate
+    **Communication**: Status page updates
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+### Optimizing Provider Performance
+
+1. **Clear Instructions**: Provide detailed payment steps
+2. **Accurate Amounts**: Ensure exact amount matches
+3. **Unique Identifiers**: Use provided reference codes
+4. **Timely Processing**: Encourage immediate payment
+5. **Customer Support**: Be ready to assist
+
+### Customer Communication
+
+Templates for different providers:
+
+<Tabs>
+  <Tab title="Zelle Instructions">
+    ```
+    Pay with Zelle:
+    1. Open your banking app
+    2. Select "Send with Zelle"
+    3. Send exactly $[AMOUNT] to [EMAIL]
+    4. Add this code to memo: [CODE]
+    5. Confirm within 30 minutes
+    ```
+  </Tab>
+  <Tab title="Coming Soon">
+    ```
+    Venmo/Wise payments coming soon!
+    Currently accepting Zelle payments.
+    
+    Questions? Contact support@shorpay.com
+    ```
+  </Tab>
+</Tabs>
+
+## Provider Fees
+
+### Fee Structure
+
+<Info>
+All provider fees are included in Shor's platform fee. You don't pay extra for different payment methods.
+</Info>
+
+What's included:
+- Payment processing
+- Currency conversion
+- Compliance screening
+- Network fees
+- Support
+
+## Future Providers
+
+### Evaluation Criteria
+
+We evaluate new providers based on:
+- Geographic coverage
+- Transaction limits
+- Settlement speed
+- Security standards
+- Customer demand
+- Integration complexity
+
+### Request a Provider
+
+Have a specific provider request?
+1. Email providers@shorpay.com
+2. Include use case details
+3. Estimated volume
+4. Geographic needs
+
+## Provider API
+
+### Checking Provider Status
+
+```javascript
+// Get available providers for amount/location
+const providers = await shor.getAvailableProviders({
+  amount: 100.00,
+  country: 'US',
+  currency: 'USD'
+});
+```
+
+### Provider Webhooks
+
+Receive updates on provider events:
+- Provider availability changes
+- New provider launches
+- Limit updates
+- Performance metrics
+
+## Troubleshooting
+
+<FAQ>
+  <FAQItem question="Why is only Zelle available?">
+    We're starting with Zelle for US customers and actively adding more providers. Venmo and Wise coming soon!
+  </FAQItem>
+  <FAQItem question="Can I disable certain providers?">
+    Yes, you can configure provider preferences in your settings once multiple providers are available.
+  </FAQItem>
+  <FAQItem question="What if a provider is down?">
+    Shor automatically routes to available providers. You'll be notified of any extended outages.
+  </FAQItem>
+  <FAQItem question="How are exchange rates determined?">
+    Providers use real-time market rates for fiat-to-USDC conversion, ensuring fair and transparent pricing.
+  </FAQItem>
+</FAQ>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Webhooks"
+    icon="webhook"
+    href="/merchant/webhooks"
+  >
+    Set up provider event notifications
+  </Card>
+  <Card
+    title="Analytics"
+    icon="chart-bar"
+    href="/merchant/analytics"
+  >
+    Track provider performance
+  </Card>
+  <Card
+    title="Customer Guide"
+    icon="users"
+    href="/customer/payment-methods"
+  >
+    Share with your customers
+  </Card>
+</CardGroup>

@@ -1,0 +1,153 @@
+---
+title: How Shor Works
+description: "Understanding the payment flow and technology behind Shor"
+---
+
+## Overview
+
+Shor simplifies crypto payments by connecting traditional payment methods with blockchain technology. Here's how the entire system works from start to finish.
+
+## The Payment Flow
+
+<Steps>
+  <Step title="Merchant Creates Payment Link">
+    The merchant logs into the Shor dashboard and creates a payment link with:
+    - Payment amount (or leave open for customer to specify)
+    - Title and description
+    - Product image (optional)
+    - Fee handling preference
+  </Step>
+  
+  <Step title="Customer Receives Link">
+    The merchant shares the payment link with their customer via:
+    - Email
+    - SMS
+    - QR code
+    - Direct link sharing
+  </Step>
+  
+  <Step title="Customer Makes Payment">
+    The customer clicks the link and:
+    - Enters their email
+    - Selects payment method (e.g., Zelle, Venmo)
+    - Completes payment through Phoenix or other integrated providers
+  </Step>
+  
+  <Step title="Smart Contract Distribution">
+    Once payment is confirmed:
+    - USDC is sent to the merchant's smart contract
+    - Funds are automatically distributed based on configured splits
+    - Transaction is recorded on the blockchain
+  </Step>
+  
+  <Step title="Merchant Receives Funds">
+    The merchant:
+    - Receives USDC directly in their wallet
+    - Can view transaction details in the dashboard
+    - Gets notified via webhooks (if configured)
+  </Step>
+</Steps>
+
+## Key Components
+
+### 1. Payment Links
+- Unique URLs that represent a payment request
+- Can be fixed amount or customer-specified
+- Include merchant branding and product details
+- Shareable across any platform
+
+### 2. Smart Contracts
+- **PayoutSplitter Contract**: Handles automatic distribution of funds
+- Deployed on Base blockchain for low fees
+- Immutable and trustless execution
+- Supports multiple recipient addresses with percentage splits
+
+### 3. Payment Providers
+- **Phoenix**: Primary provider for Zelle integration
+- Converts traditional payments to USDC
+- Handles compliance and AML screening
+- More providers coming soon (Venmo, Wise, etc.)
+
+### 4. USDC Settlement
+- All payments settle in USDC (USD Coin)
+- Stable value pegged to US Dollar
+- Fast settlement times
+- Low transaction fees on Base
+
+## Security Features
+
+<CardGroup cols={2}>
+  <Card title="Smart Contract Security" icon="shield-check">
+    All fund distributions are handled by audited smart contracts, ensuring automatic and trustless execution.
+  </Card>
+  <Card title="AML Compliance" icon="user-shield">
+    Built-in Anti-Money Laundering screening for all transactions to ensure regulatory compliance.
+  </Card>
+  <Card title="Non-Custodial" icon="key">
+    Shor never holds your funds - payments go directly from customer to your wallet.
+  </Card>
+  <Card title="On-Chain Transparency" icon="link">
+    All transactions are recorded on the blockchain, providing full transparency and auditability.
+  </Card>
+</CardGroup>
+
+## Fee Structure
+
+Shor charges a small platform fee on each transaction. Merchants can choose to:
+
+- **Absorb the fee**: Customer pays the exact amount, merchant receives amount minus fee
+- **Pass fee to customer**: Customer pays amount plus fee, merchant receives full amount
+
+<Note>
+Current fee structure and rates are available in your merchant dashboard settings.
+</Note>
+
+## Supported Blockchains
+
+Currently, Shor operates on:
+- **Base**: An Ethereum Layer 2 blockchain offering low fees and fast transactions
+
+## Benefits for Different Users
+
+<Tabs>
+  <Tab title="For Merchants">
+    - Accept crypto without technical knowledge
+    - Instant settlement to your wallet
+    - No chargebacks or payment reversals
+    - Lower fees than traditional payment processors
+    - Global customer reach
+  </Tab>
+  <Tab title="For Customers">
+    - Pay with familiar methods (Zelle, etc.)
+    - No need to own crypto or understand wallets
+    - Secure and private transactions
+    - Clear payment confirmations
+    - Protection through smart contracts
+  </Tab>
+  <Tab title="For Developers">
+    - RESTful API for integration
+    - Webhook notifications
+    - Open-source smart contracts
+    - Comprehensive documentation
+    - SDK coming soon
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Start Accepting Payments"
+    icon="rocket"
+    href="/merchant/getting-started"
+  >
+    Set up your merchant account and create your first payment link
+  </Card>
+  <Card
+    title="Technical Documentation"
+    icon="code"
+    href="/developer/architecture"
+  >
+    Dive deeper into the technical architecture
+  </Card>
+</CardGroup>

@@ -1,0 +1,198 @@
+---
+title: Merchant Dashboard Overview
+description: "Navigate and understand your Shor merchant dashboard"
+---
+
+## Dashboard Layout
+
+The Shor merchant dashboard is your central hub for managing payment links, viewing transactions, and monitoring your business metrics.
+
+<Frame>
+  <img src="/images/dashboard-overview.png" alt="Shor Dashboard Overview" />
+</Frame>
+
+## Main Sections
+
+### 1. Overview Page
+
+The overview page displays:
+- **Recent Transactions**: Your latest payments with key details
+- **Saved Payment Links**: Quick access to your active payment links
+- **Quick Stats**: Total volume, number of transactions, etc.
+
+### 2. Navigation Menu
+
+Located on the left sidebar:
+
+<Tabs>
+  <Tab title="Overview">
+    Dashboard home with summary metrics and recent activity
+  </Tab>
+  <Tab title="Payment Links">
+    - View all payment links
+    - Filter by status (active/inactive)
+    - Quick actions (copy, edit, disable)
+  </Tab>
+  <Tab title="Transactions">
+    - Complete transaction history
+    - Advanced filtering options
+    - Export capabilities
+  </Tab>
+  <Tab title="Create Link">
+    Quick access to create new payment links
+  </Tab>
+  <Tab title="Settings">
+    - Profile configuration
+    - Wallet management
+    - Fee preferences
+    - API keys
+  </Tab>
+</Tabs>
+
+## Key Features
+
+### Payment Link Cards
+
+Each payment link displays:
+- **Title & Description**: What you're selling
+- **Amount**: Fixed or variable pricing
+- **Status**: Active/Inactive indicator
+- **Created Date**: When the link was created
+- **Quick Actions**:
+  - Copy link
+  - View QR code
+  - Edit details
+  - Toggle active status
+
+### Transaction Table
+
+The transaction view includes:
+
+| Column | Description |
+|--------|-------------|
+| Transaction ID | Unique identifier for each payment |
+| Customer | Wallet address or identifier |
+| Amount | Payment amount in USD |
+| USDC Received | Actual USDC amount received |
+| Date & Time | When the transaction occurred |
+| Status | Pending, Completed, or Failed |
+| Payment Link | Which link was used |
+| Transaction Hash | Blockchain verification link |
+
+### Real-time Updates
+
+<Note>
+The dashboard updates in real-time as transactions occur. No need to refresh!
+</Note>
+
+## Status Indicators
+
+Understanding transaction statuses:
+
+<CardGroup cols={3}>
+  <Card title="Pending" icon="clock" color="#FFA500">
+    Payment initiated but not yet confirmed on blockchain
+  </Card>
+  <Card title="Completed" icon="check-circle" color="#00FF00">
+    Payment successfully received and settled
+  </Card>
+  <Card title="Failed" icon="x-circle" color="#FF0000">
+    Payment was not completed successfully
+  </Card>
+</CardGroup>
+
+## Dashboard Actions
+
+### Creating Payment Links
+Click the "Create Payment Link" button to:
+1. Set payment details
+2. Configure fee handling
+3. Generate shareable link
+
+### Managing Links
+For each payment link, you can:
+- **Copy**: Get the link URL instantly
+- **Share**: Generate QR codes or share directly
+- **Edit**: Update amounts, descriptions, or images
+- **Disable**: Temporarily stop accepting payments
+
+### Viewing Transactions
+- **Filter**: By date range, status, or payment link
+- **Search**: Find specific transactions by ID
+- **Export**: Download transaction data as CSV
+- **Details**: Click any transaction for full details
+
+## Metrics & Analytics
+
+The dashboard provides insights into:
+
+<AccordionGroup>
+  <Accordion title="Volume Metrics">
+    - Total payment volume
+    - Average transaction size
+    - Number of transactions
+    - Growth trends
+  </Accordion>
+  <Accordion title="Link Performance">
+    - Most used payment links
+    - Conversion rates
+    - Link click tracking
+    - Revenue per link
+  </Accordion>
+  <Accordion title="Customer Insights">
+    - Payment method preferences
+    - Transaction patterns
+    - Geographic distribution
+    - Repeat customers
+  </Accordion>
+</AccordionGroup>
+
+## Mobile Responsiveness
+
+The dashboard is fully responsive and works on:
+- Desktop computers
+- Tablets
+- Mobile phones
+
+<Tip>
+Add the dashboard to your mobile home screen for quick access on the go!
+</Tip>
+
+## Keyboard Shortcuts
+
+Speed up your workflow with these shortcuts:
+
+| Shortcut | Action |
+|----------|--------|
+| `Cmd/Ctrl + K` | Quick search |
+| `Cmd/Ctrl + N` | Create new payment link |
+| `Cmd/Ctrl + C` | Copy selected link |
+| `Cmd/Ctrl + /` | Show all shortcuts |
+
+## Customization Options
+
+Personalize your dashboard:
+
+1. **Theme**: Light or dark mode
+2. **Layout**: Compact or comfortable view
+3. **Notifications**: Configure alerts
+4. **Display**: Show/hide certain metrics
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Create Your First Link"
+    icon="plus"
+    href="/merchant/creating-payment-links"
+  >
+    Learn how to create effective payment links
+  </Card>
+  <Card
+    title="Understand Transactions"
+    icon="chart-line"
+    href="/merchant/viewing-transactions"
+  >
+    Deep dive into transaction management
+  </Card>
+</CardGroup>

@@ -1,0 +1,330 @@
+---
+title: Viewing Transactions
+description: "Monitor, analyze, and export your payment transactions"
+---
+
+## Transaction Dashboard
+
+The Transactions page provides a comprehensive view of all payments processed through your Shor account. Access it from the main navigation menu.
+
+## Transaction Table Overview
+
+### Table Columns
+
+| Column | Description | Sortable |
+|--------|-------------|----------|
+| **Transaction ID** | Unique identifier for each payment | Yes |
+| **Customer** | Wallet address or customer identifier | No |
+| **Amount** | Original payment amount in USD | Yes |
+| **USDC Received** | Actual USDC amount after conversions | Yes |
+| **Date & Time** | Transaction timestamp (UTC) | Yes |
+| **Status** | Current transaction state | Yes |
+| **Payment Link** | Which link was used | Yes |
+| **Payout Wallet** | Destination wallet address | No |
+| **Transaction Hash** | Blockchain verification link | No |
+
+### Understanding Transaction Data
+
+<Tabs>
+  <Tab title="Transaction ID">
+    - Unique identifier for internal tracking
+    - Format: `ORD-XXXX-XXXX-XXXX`
+    - Use for support queries
+    - Searchable in dashboard
+  </Tab>
+  <Tab title="Customer Info">
+    - Shows wallet address or email
+    - Click to copy address
+    - May include payment method
+    - Helps identify repeat customers
+  </Tab>
+  <Tab title="Amounts">
+    **Amount**: What customer paid
+    **USDC Received**: What you received
+    - May differ due to:
+      - Conversion rates
+      - Network fees
+      - Platform fees
+  </Tab>
+  <Tab title="Blockchain Data">
+    - **Transaction Hash**: Proof of payment
+    - **Payout Wallet**: Your receiving address
+    - Click to view on Basescan
+    - Immutable record
+  </Tab>
+</Tabs>
+
+## Transaction Statuses
+
+<CardGroup cols={3}>
+  <Card title="Pending" icon="clock" color="#FFA500">
+    - Payment initiated
+    - Awaiting blockchain confirmation
+    - Usually resolves in 2-5 minutes
+  </Card>
+  <Card title="Completed" icon="check-circle" color="#00FF00">
+    - Payment confirmed on blockchain
+    - Funds sent to your wallet
+    - Transaction is final
+  </Card>
+  <Card title="Failed" icon="x-circle" color="#FF0000">
+    - Payment was not successful
+    - Customer not charged
+    - May need customer action
+  </Card>
+</CardGroup>
+
+## Filtering and Searching
+
+### Quick Filters
+
+Use preset filters for common queries:
+- **Today**: Transactions from last 24 hours
+- **This Week**: Current week's transactions
+- **This Month**: Current month's activity
+- **All Time**: Complete history
+
+### Advanced Filtering
+
+<AccordionGroup>
+  <Accordion title="By Date Range">
+    1. Click the date filter
+    2. Select start and end dates
+    3. Apply filter
+    4. Export results if needed
+  </Accordion>
+  <Accordion title="By Status">
+    Filter by transaction status:
+    - Show only completed
+    - Show only pending
+    - Show failed transactions
+    - Combine multiple statuses
+  </Accordion>
+  <Accordion title="By Payment Link">
+    - Select specific payment link
+    - View all transactions for that link
+    - Compare link performance
+    - Identify best sellers
+  </Accordion>
+  <Accordion title="By Amount">
+    Set minimum/maximum amounts:
+    - High-value transactions
+    - Micro-payments
+    - Specific price points
+    - Custom ranges
+  </Accordion>
+</AccordionGroup>
+
+### Search Functionality
+
+Search for specific transactions using:
+- Transaction ID
+- Customer wallet address
+- Transaction hash
+- Amount (exact match)
+
+<Tip>
+Use the search bar for quick lookups when helping customers or reconciling accounts.
+</Tip>
+
+## Transaction Details
+
+### Viewing Full Details
+
+Click any transaction row to see:
+1. Complete transaction timeline
+2. Payment method used
+3. Fee breakdown
+4. Smart contract interactions
+5. Customer information
+6. Related payment link details
+
+### Transaction Timeline
+
+<Steps>
+  <Step title="Initiated">
+    Customer clicked payment link and started process
+  </Step>
+  <Step title="Payment Sent">
+    Customer completed payment via chosen method
+  </Step>
+  <Step title="Processing">
+    Payment provider converting to USDC
+  </Step>
+  <Step title="Blockchain Confirmation">
+    USDC sent to smart contract
+  </Step>
+  <Step title="Distribution">
+    Smart contract distributed funds to wallet(s)
+  </Step>
+  <Step title="Completed">
+    Transaction finalized and recorded
+  </Step>
+</Steps>
+
+## Exporting Transactions
+
+### Export Options
+
+Export your transaction data for:
+- Accounting purposes
+- Tax reporting
+- Business analytics
+- Record keeping
+
+### Export Formats
+
+<Tabs>
+  <Tab title="CSV Export">
+    - Compatible with Excel/Google Sheets
+    - Includes all transaction fields
+    - Easy to manipulate and analyze
+    - Best for accounting software
+  </Tab>
+  <Tab title="PDF Report">
+    - Professional formatted report
+    - Include company branding
+    - Ready for printing
+    - Good for documentation
+  </Tab>
+  <Tab title="JSON Export">
+    - Developer-friendly format
+    - Complete data structure
+    - API integration ready
+    - Includes metadata
+  </Tab>
+</Tabs>
+
+### Export Best Practices
+
+1. **Regular Exports**: Export monthly for record-keeping
+2. **Filter First**: Apply filters before exporting
+3. **Verify Data**: Check totals match dashboard
+4. **Secure Storage**: Store exports securely
+5. **Backup**: Keep multiple copies
+
+## Analytics and Insights
+
+### Transaction Metrics
+
+Monitor key performance indicators:
+
+<CardGroup cols={2}>
+  <Card title="Daily Volume" icon="calendar-day">
+    Track daily transaction totals and patterns
+  </Card>
+  <Card title="Average Transaction" icon="calculator">
+    Monitor average payment amounts over time
+  </Card>
+  <Card title="Success Rate" icon="percentage">
+    Percentage of successful vs failed transactions
+  </Card>
+  <Card title="Customer Retention" icon="users">
+    Identify repeat customers and frequency
+  </Card>
+</CardGroup>
+
+### Identifying Patterns
+
+Look for:
+- Peak transaction times
+- Popular payment amounts
+- Customer preferences
+- Seasonal trends
+- Geographic patterns
+
+## Reconciliation
+
+### Matching Payments
+
+Steps for reconciliation:
+1. Export transactions for period
+2. Compare with bank/wallet statements
+3. Match USDC deposits
+4. Identify any discrepancies
+5. Verify on blockchain if needed
+
+### Common Reconciliation Issues
+
+<Warning>
+Always verify large or unusual transactions on the blockchain using the transaction hash.
+</Warning>
+
+Issues and solutions:
+- **Missing transactions**: Check pending status
+- **Amount differences**: Review fee settings
+- **Timing mismatches**: Consider timezone differences
+- **Duplicate entries**: Verify transaction hashes
+
+## Customer Support
+
+### Helping Customers
+
+When customers inquire about payments:
+1. Ask for transaction ID or amount/date
+2. Search in your dashboard
+3. Verify transaction status
+4. Provide transaction hash if requested
+5. Explain any delays or issues
+
+### Common Customer Questions
+
+<FAQ>
+  <FAQItem question="Where is my payment confirmation?">
+    Provide the transaction ID and hash. Show them how to verify on Basescan.
+  </FAQItem>
+  <FAQItem question="Why is my payment pending?">
+    Explain blockchain confirmation times and that it typically resolves in 2-5 minutes.
+  </FAQItem>
+  <FAQItem question="Can I get a refund?">
+    Explain that blockchain transactions are irreversible, but you can process refunds manually if your policy allows.
+  </FAQItem>
+</FAQ>
+
+## Security and Compliance
+
+### Transaction Monitoring
+
+Regular monitoring helps:
+- Detect unusual patterns
+- Prevent fraud
+- Ensure compliance
+- Maintain security
+
+### AML Compliance
+
+All transactions include:
+- AML screening results
+- Risk scores
+- Compliance flags
+- Audit trail
+
+<Info>
+Shor automatically screens transactions for AML compliance. High-risk transactions may require additional verification.
+</Info>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Configure Settings"
+    icon="gear"
+    href="/merchant/settings"
+  >
+    Customize your account preferences
+  </Card>
+  <Card
+    title="Set Up Webhooks"
+    icon="webhook"
+    href="/merchant/webhooks"
+  >
+    Automate transaction notifications
+  </Card>
+  <Card
+    title="View Analytics"
+    icon="chart-bar"
+    href="/merchant/analytics"
+  >
+    Deep dive into your business metrics
+  </Card>
+</CardGroup>

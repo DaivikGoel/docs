@@ -1,0 +1,169 @@
+---
+title: Getting Started as a Merchant
+description: "Start accepting crypto payments in minutes"
+---
+
+## Welcome to Shor!
+
+This guide will walk you through setting up your merchant account and creating your first payment link. By the end, you'll be ready to accept USDC payments from customers worldwide.
+
+## Prerequisites
+
+Before you begin, you'll need:
+
+<CardGroup cols={2}>
+  <Card title="MetaMask Wallet" icon="wallet">
+    A crypto wallet to receive payments. We recommend MetaMask.
+    [Set up MetaMask →](/essentials/metamask-wallet)
+  </Card>
+  <Card title="Base Network USDC" icon="coins">
+    A small amount of USDC on Base network for gas fees (usually less than $1).
+  </Card>
+</CardGroup>
+
+## Step-by-Step Setup
+
+<Steps>
+  <Step title="Create Your Account">
+    1. Visit [app.shorpay.com](https://app.shorpay.com)
+    2. Click "Sign Up" or "Get Started"
+    3. Complete the registration with your email
+    4. Verify your email address
+  </Step>
+  
+  <Step title="Connect Your Wallet">
+    1. Click "Connect Wallet" in the dashboard
+    2. Select MetaMask (or your preferred wallet)
+    3. Approve the connection request
+    4. Ensure you're on the Base network
+    
+    <Warning>
+    Make sure you're connected to Base network, not Ethereum mainnet. Your wallet should show "Base" in the network selector.
+    </Warning>
+  </Step>
+  
+  <Step title="Configure Your Profile">
+    Navigate to Settings in your dashboard and set up:
+    - Business name
+    - Contact information
+    - Default payment settings
+    - Webhook URLs (optional)
+  </Step>
+  
+  <Step title="Create Your First Payment Link">
+    1. Click "Create Payment Link" on the dashboard
+    2. Fill in the payment details:
+       - **Title**: What you're selling
+       - **Amount**: Fixed price or customer-specified
+       - **Description**: Additional details
+       - **Image**: Product or service image (optional)
+    3. Choose fee handling (absorb or pass to customer)
+    4. Click "Create Link"
+  </Step>
+  
+  <Step title="Share Your Payment Link">
+    Once created, you can:
+    - Copy the link to share directly
+    - Generate a QR code
+    - Send via email or SMS
+    - Embed on your website
+  </Step>
+</Steps>
+
+## Understanding Your First Transaction
+
+When a customer completes a payment:
+
+1. **Notification**: You'll see the transaction appear in your dashboard immediately
+2. **Settlement**: USDC is sent directly to your wallet (usually within minutes)
+3. **Confirmation**: Transaction hash is available for blockchain verification
+4. **Status Updates**: Track payment status from pending to completed
+
+## Smart Contract Setup
+
+<Info>
+Shor automatically deploys a PayoutSplitter smart contract for you. This contract handles the distribution of funds and ensures secure, automated payments.
+</Info>
+
+### What This Means
+- Your funds are sent to a smart contract address
+- The contract automatically forwards funds to your wallet
+- You can configure multiple recipients and percentage splits
+- All transactions are transparent and verifiable on-chain
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Security Tips">
+    - Never share your wallet's private key
+    - Always verify the network (Base) before transactions
+    - Use a hardware wallet for large volumes
+    - Enable 2FA on your Shor account
+  </Accordion>
+  
+  <Accordion title="Payment Link Tips">
+    - Use descriptive titles and clear amounts
+    - Add product images to increase trust
+    - Test with a small amount first
+    - Save frequently used links as templates
+  </Accordion>
+  
+  <Accordion title="Customer Communication">
+    - Explain that payments settle in USDC
+    - Provide clear instructions with the link
+    - Include your business name in the description
+    - Set up email notifications for confirmations
+  </Accordion>
+</AccordionGroup>
+
+## Common Questions
+
+<FAQ>
+  <FAQItem question="How quickly do I receive payments?">
+    Payments typically settle within 2-5 minutes after customer confirmation. The exact time depends on blockchain congestion.
+  </FAQItem>
+  
+  <FAQItem question="What are the fees?">
+    Shor charges a competitive platform fee. You can see current rates in your dashboard settings and choose whether to absorb or pass fees to customers.
+  </FAQItem>
+  
+  <FAQItem question="Can I accept other cryptocurrencies?">
+    Currently, all payments settle in USDC on Base network. This provides stability and predictability for your business.
+  </FAQItem>
+  
+  <FAQItem question="What if my customer doesn't have crypto?">
+    That's the beauty of Shor! Customers can pay with traditional methods like Zelle, and our payment providers handle the conversion to USDC.
+  </FAQItem>
+</FAQ>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Create Payment Links"
+    icon="link"
+    href="/merchant/creating-payment-links"
+  >
+    Learn advanced payment link features
+  </Card>
+  <Card
+    title="View Transactions"
+    icon="receipt"
+    href="/merchant/viewing-transactions"
+  >
+    Understand your transaction dashboard
+  </Card>
+  <Card
+    title="Configure Webhooks"
+    icon="webhook"
+    href="/merchant/webhooks"
+  >
+    Set up automated notifications
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+- **Email**: support@shorpay.com
+- **Documentation**: You're already here!
+- **Dashboard**: Check the help section in your dashboard

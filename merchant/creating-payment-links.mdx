@@ -1,0 +1,279 @@
+---
+title: Creating Payment Links
+description: "Master the art of creating effective payment links"
+---
+
+## Overview
+
+Payment links are the core of the Shor platform. They're unique URLs that you can share with customers to accept payments. This guide covers everything you need to know about creating and optimizing payment links.
+
+## Creating Your First Link
+
+<Steps>
+  <Step title="Navigate to Create Link">
+    Click "Create Payment Link" button in your dashboard or use the sidebar navigation
+  </Step>
+  
+  <Step title="Fill in Basic Details">
+    **Required Fields:**
+    - **Title**: Clear, descriptive name for what you're selling
+    - **Fee Handling**: Choose who pays the platform fee
+    
+    **Optional Fields:**
+    - **Amount**: Fixed price or leave blank for customer to specify
+    - **Description**: Additional details about the product/service
+    - **Image URL**: Visual representation of your offering
+  </Step>
+  
+  <Step title="Configure Advanced Options">
+    - **Active Status**: Enable/disable the link
+    - **Private Matching**: Require specific payment verification
+    - **Expiration**: Set time limits (coming soon)
+  </Step>
+  
+  <Step title="Review and Create">
+    Double-check all details and click "Create Payment Link"
+  </Step>
+</Steps>
+
+## Payment Link Types
+
+### Fixed Amount Links
+Best for:
+- Products with set prices
+- Service packages
+- Subscriptions
+- Event tickets
+
+Example:
+```
+Title: "Premium Consultation - 1 Hour"
+Amount: $150.00
+Description: "One-on-one business strategy session"
+```
+
+### Variable Amount Links
+Best for:
+- Donations
+- Tips
+- Custom services
+- Pay-what-you-want models
+
+Example:
+```
+Title: "Support Our Project"
+Amount: [Leave empty]
+Description: "Any amount helps us continue our work"
+```
+
+## Fee Handling Options
+
+<Tabs>
+  <Tab title="Merchant Absorbs Fee">
+    **How it works:**
+    - Customer pays exact amount shown
+    - You receive amount minus platform fee
+    - Best for maintaining clean pricing
+    
+    **Example:**
+    - Customer pays: $100.00
+    - Platform fee (2.9%): $2.90
+    - You receive: $97.10
+  </Tab>
+  
+  <Tab title="Customer Pays Fee">
+    **How it works:**
+    - Customer pays amount plus fee
+    - You receive full amount
+    - Best for preserving margins
+    
+    **Example:**
+    - Listed amount: $100.00
+    - Platform fee (2.9%): $2.90
+    - Customer pays: $102.90
+    - You receive: $100.00
+  </Tab>
+</Tabs>
+
+## Optimizing Your Payment Links
+
+### Effective Titles
+<DOs>
+- Be specific and clear
+- Include key details (quantity, duration, etc.)
+- Use action-oriented language
+- Keep it concise (under 50 characters)
+</DOs>
+
+<DONTs>
+- Use vague descriptions
+- Include special characters that might break URLs
+- Make it too long
+- Use ALL CAPS
+</DONTs>
+
+### Compelling Descriptions
+Write descriptions that:
+1. Clearly explain what the customer is paying for
+2. Include any important terms or conditions
+3. Mention delivery or fulfillment details
+4. Build trust with professional language
+
+### Using Images
+<Info>
+Adding images can increase conversion rates by up to 40%. Use high-quality images that represent your product or service.
+</Info>
+
+Image best practices:
+- **Format**: JPEG or PNG
+- **Size**: At least 600x400 pixels
+- **Content**: Clear, professional, relevant
+- **Hosting**: Use reliable image hosting services
+
+## Advanced Features
+
+### Private Matching
+Enable this for:
+- High-value transactions
+- Verified customers only
+- Compliance requirements
+- Additional security
+
+### Smart Contract Configuration
+Each payment link is associated with a smart contract that can:
+- Split payments between multiple recipients
+- Automate fee distribution
+- Ensure trustless execution
+
+### Custom Parameters
+Add tracking parameters to your links:
+```
+https://pay.shorpay.com/link/abc123?ref=email-campaign
+https://pay.shorpay.com/link/abc123?source=instagram
+```
+
+## Payment Link Management
+
+### Editing Links
+You can edit:
+- Title and description
+- Amount (if not used yet)
+- Image URL
+- Active status
+
+<Warning>
+Once a payment link has been used, certain fields like amount cannot be changed to maintain transaction integrity.
+</Warning>
+
+### Disabling Links
+Reasons to disable:
+- Temporary stock shortage
+- End of promotion
+- Switching to new pricing
+- Security concerns
+
+### Duplicating Links
+Save time by duplicating existing links:
+1. Find successful link
+2. Click "Duplicate"
+3. Modify details as needed
+4. Create new link
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="For E-commerce">
+    - Include product SKUs in descriptions
+    - Use high-quality product images
+    - Set clear delivery expectations
+    - Create separate links for variants
+  </Accordion>
+  
+  <Accordion title="For Services">
+    - Specify service duration
+    - Include what's covered
+    - Mention scheduling process
+    - Add cancellation policy
+  </Accordion>
+  
+  <Accordion title="For Donations">
+    - Use variable amounts
+    - Explain impact of donations
+    - Add compelling imagery
+    - Include tax deduction info
+  </Accordion>
+  
+  <Accordion title="For Events">
+    - Include date and time
+    - Specify location/online details
+    - Mention what's included
+    - Set expiration before event
+  </Accordion>
+</AccordionGroup>
+
+## Sharing Your Links
+
+### Direct Sharing
+Copy and paste links into:
+- Email campaigns
+- SMS messages
+- Social media posts
+- Direct messages
+
+### QR Codes
+Generate QR codes for:
+- Physical locations
+- Print materials
+- Event displays
+- Business cards
+
+### Embedding
+Add payment buttons to your website:
+```html
+<a href="https://pay.shorpay.com/link/your-link-id" 
+   class="shor-payment-button">
+  Pay with Shor
+</a>
+```
+
+## Tracking Performance
+
+Monitor link metrics:
+- **Views**: How many times the link was accessed
+- **Conversions**: Successful payments
+- **Conversion Rate**: Percentage of views that paid
+- **Revenue**: Total amount collected
+
+## Common Mistakes to Avoid
+
+1. **Unclear pricing**: Always be transparent about amounts
+2. **Missing descriptions**: Provide context for payments
+3. **Broken image links**: Test images before sharing
+4. **Forgetting to activate**: Ensure links are active
+5. **No testing**: Always test with a small amount first
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Manage Links"
+    icon="list"
+    href="/merchant/managing-payment-links"
+  >
+    Learn to organize and manage multiple links
+  </Card>
+  <Card
+    title="Track Payments"
+    icon="chart-line"
+    href="/merchant/viewing-transactions"
+  >
+    Monitor your payment activity
+  </Card>
+  <Card
+    title="Optimize Conversions"
+    icon="rocket"
+    href="/merchant/analytics"
+  >
+    Improve your payment link performance
+  </Card>
+</CardGroup>

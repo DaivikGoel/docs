@@ -1,0 +1,344 @@
+---
+title: Payment Process Guide
+description: "Step-by-step walkthrough of making a payment with Shor"
+---
+
+## Payment Overview
+
+This guide provides a detailed walkthrough of the entire payment process, from receiving a link to getting your confirmation.
+
+## Before You Start
+
+### What You'll Need
+
+<Checklist>
+- [ ] Payment link from merchant
+- [ ] Access to your banking app (with Zelle)
+- [ ] Email address for receipt
+- [ ] Exact payment amount
+</Checklist>
+
+### Quick Checks
+
+Before starting payment:
+1. **Verify Merchant**: Ensure you recognize the seller
+2. **Check Amount**: Confirm price is correct
+3. **Read Description**: Understand what you're paying for
+4. **Note Fees**: See if fees are included
+
+## Detailed Payment Steps
+
+### Step 1: Open Payment Link
+
+When you click the payment link:
+
+<Frame>
+  <img src="/images/payment-link-example.png" alt="Payment Link Page" />
+</Frame>
+
+You'll see:
+- **Merchant Logo/Image**: Visual identifier
+- **Title**: What you're purchasing
+- **Amount**: How much to pay
+- **Description**: Additional details
+- **Pay Button**: Start payment process
+
+<Tip>
+Screenshot or bookmark the page for reference during payment.
+</Tip>
+
+### Step 2: Enter Your Information
+
+Click "Pay Now" and provide:
+
+<Tabs>
+  <Tab title="Required Info">
+    **Email Address**:
+    - For payment confirmation
+    - Receipt delivery
+    - Support contact
+    
+    Enter carefully - this is how you'll receive confirmation!
+  </Tab>
+  <Tab title="Optional Info">
+    Some merchants may request:
+    - Name
+    - Phone number
+    - Delivery address
+    - Order notes
+  </Tab>
+</Tabs>
+
+### Step 3: Select Payment Method
+
+Choose your payment method:
+
+<Card title="Zelle (Available Now)" icon="building-columns">
+  - Instant bank transfers
+  - Supported by major US banks
+  - No additional Zelle fees
+  - Processes in 2-5 minutes
+</Card>
+
+<Info>
+More payment methods coming soon! Currently, Zelle is the primary option for US customers.
+</Info>
+
+### Step 4: Payment Instructions
+
+After selecting Zelle, you'll receive:
+
+```
+Pay via Zelle:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Recipient: payments@shorpay.com
+Amount: $125.00 (exact amount required)
+Reference: SHR-A7B9-X2M4
+
+IMPORTANT: Include reference in memo!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+<Warning>
+Copy these details exactly. The reference code is crucial for matching your payment.
+</Warning>
+
+### Step 5: Make Zelle Payment
+
+Open your banking app:
+
+<Steps>
+  <Step title="Find Zelle">
+    Look for "Send with Zelle" or Zelle icon in your banking app
+  </Step>
+  
+  <Step title="Add Recipient">
+    - Enter the exact email provided
+    - May show as "Shor Payments" or similar
+  </Step>
+  
+  <Step title="Enter Amount">
+    - Type the EXACT amount shown
+    - Don't round up or down
+    - Include cents (e.g., $125.00)
+  </Step>
+  
+  <Step title="Add Reference">
+    - Find memo/note field
+    - Enter the reference code
+    - Double-check accuracy
+  </Step>
+  
+  <Step title="Send Payment">
+    - Review all details
+    - Confirm and send
+    - Note confirmation number
+  </Step>
+</Steps>
+
+### Step 6: Confirm on Shor
+
+Return to the Shor payment page:
+
+1. Click "I've Completed Payment"
+2. Wait for processing (usually 2-5 minutes)
+3. Don't close the page yet!
+
+You'll see a processing indicator:
+```
+Processing your payment...
+This usually takes 2-5 minutes
+Please don't close this page
+```
+
+### Step 7: Payment Confirmation
+
+Once processed, you'll see:
+
+<Tabs>
+  <Tab title="Success Screen">
+    ✅ **Payment Successful!**
+    
+    - Transaction ID
+    - Amount paid
+    - Timestamp
+    - Merchant details
+    - "View Receipt" button
+  </Tab>
+  <Tab title="Email Receipt">
+    Check your email for:
+    - Payment confirmation
+    - Transaction details
+    - Blockchain verification
+    - Support contact
+  </Tab>
+</Tabs>
+
+## Understanding the Process
+
+### What Happens Behind the Scenes
+
+<Timeline>
+  <TimelineItem title="You Send Zelle Payment" time="0:00">
+    Payment sent from your bank to Shor's payment processor
+  </TimelineItem>
+  <TimelineItem title="Payment Detected" time="0:30">
+    System matches your payment using reference code
+  </TimelineItem>
+  <TimelineItem title="Conversion Initiated" time="1:00">
+    Your USD payment is converted to USDC cryptocurrency
+  </TimelineItem>
+  <TimelineItem title="Blockchain Transaction" time="2:00">
+    USDC sent to merchant's smart contract
+  </TimelineItem>
+  <TimelineItem title="Confirmation" time="3:00">
+    All parties notified of successful payment
+  </TimelineItem>
+</Timeline>
+
+### Why Reference Codes Matter
+
+The reference code (e.g., SHR-A7B9-X2M4) is critical because:
+- Links your payment to your order
+- Ensures accurate delivery
+- Enables automatic processing
+- Prevents payment mix-ups
+
+<Warning>
+Without the correct reference code, your payment may be delayed or require manual intervention.
+</Warning>
+
+## Common Scenarios
+
+### Fixed Amount Payments
+
+Most common type:
+- Merchant sets exact price
+- You pay the amount shown
+- No guesswork involved
+
+### Variable Amount Payments
+
+For donations or custom amounts:
+- You enter desired amount
+- Minimum may apply
+- Confirm before sending
+
+### Fee Handling Examples
+
+<Tabs>
+  <Tab title="Merchant Absorbs Fee">
+    ```
+    Product Price: $100.00
+    You Pay: $100.00
+    Merchant Receives: $97.10
+    ```
+  </Tab>
+  <Tab title="You Pay Fee">
+    ```
+    Product Price: $100.00
+    Processing Fee: $2.90
+    You Pay: $102.90
+    Merchant Receives: $100.00
+    ```
+  </Tab>
+</Tabs>
+
+## Payment Tips
+
+### For Smooth Transactions
+
+✅ **Do:**
+- Pay exact amounts
+- Include reference codes
+- Complete quickly (within 30 min)
+- Save confirmations
+- Check email for receipt
+
+❌ **Don't:**
+- Round payment amounts
+- Skip the reference code
+- Use multiple payments
+- Close page while processing
+- Share payment details
+
+### Banking App Tips
+
+Different banks, same process:
+
+<AccordionGroup>
+  <Accordion title="Bank of America">
+    Transfers → Zelle → Send Money → Enter Details
+  </Accordion>
+  <Accordion title="Chase">
+    Pay & Transfer → Zelle → Send Money → Add Recipient
+  </Accordion>
+  <Accordion title="Wells Fargo">
+    Transfer & Pay → Send Money with Zelle → Enter Info
+  </Accordion>
+  <Accordion title="Other Banks">
+    Look for Zelle logo or "Send Money" option
+  </Accordion>
+</AccordionGroup>
+
+## After Payment
+
+### What to Expect
+
+1. **Immediate**: Processing screen
+2. **2-5 Minutes**: Payment confirmation
+3. **Email**: Receipt and details
+4. **Merchant**: May send additional confirmation
+
+### Save Your Records
+
+Keep for your records:
+- Email receipt
+- Transaction ID
+- Payment screenshot
+- Merchant communication
+
+## Quick Troubleshooting
+
+### Payment Not Showing?
+
+<Steps>
+  <Step title="Wait 5 Minutes">
+    Processing can take a few minutes
+  </Step>
+  <Step title="Check Details">
+    Verify amount and reference code match
+  </Step>
+  <Step title="Confirm Sent">
+    Check your bank for confirmation
+  </Step>
+  <Step title="Contact Support">
+    Email support@shorpay.com with details
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Payment Methods"
+    icon="credit-card"
+    href="/customer/payment-methods"
+  >
+    Learn about available options
+  </Card>
+  <Card
+    title="Check Status"
+    icon="magnifying-glass"
+    href="/customer/transaction-status"
+  >
+    Track your payment
+  </Card>
+  <Card
+    title="Get Help"
+    icon="question"
+    href="/customer/troubleshooting"
+  >
+    Troubleshooting guide
+  </Card>
+</CardGroup>

@@ -1,33 +1,226 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API Introduction'
+description: 'Build powerful integrations with the Shor API'
 ---
 
+## Overview
+
+The Shor API enables you to programmatically create payment links, manage transactions, and integrate payment functionality into your applications. Our RESTful API is designed to be simple, secure, and scalable.
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.shorpay.com/api/v1
+```
+
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+Always use HTTPS for API requests. HTTP requests will be rejected.
 </Note>
 
-## Welcome
+## Key Features
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+<CardGroup cols={2}>
+  <Card title="Payment Links" icon="link">
+    Create and manage payment links programmatically
+  </Card>
+  <Card title="Transactions" icon="receipt">
+    Track and retrieve transaction data in real-time
+  </Card>
+  <Card title="Webhooks" icon="webhook">
+    Receive instant notifications for payment events
+  </Card>
+  <Card title="Analytics" icon="chart-bar">
+    Access detailed analytics and reporting data
+  </Card>
+</CardGroup>
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+## Quick Start
 
-## Authentication
+<Steps>
+  <Step title="Get API Key">
+    Generate an API key from your [dashboard settings](/merchant/settings)
+  </Step>
+  <Step title="Make First Request">
+    Test your connection with a simple GET request
+  </Step>
+  <Step title="Create Payment Link">
+    Use the API to create your first payment link
+  </Step>
+  <Step title="Handle Webhooks">
+    Set up webhooks to receive payment notifications
+  </Step>
+</Steps>
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## API Concepts
+
+### Resources
+
+The Shor API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP response codes.
+
+**Main Resources:**
+- **Payment Links**: Create and manage payment links
+- **Transactions**: View and track payments
+- **Merchants**: Manage merchant settings
+- **Webhooks**: Configure event notifications
+
+### Request Format
+
+All POST and PUT requests must include:
+- `Content-Type: application/json` header
+- Valid JSON body
+- Authentication header
+
+Example request:
+```bash
+curl -X POST https://api.shorpay.com/api/v1/merchant/payment-links/create \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Premium Service",
+    "amount": "100.00",
+    "description": "One month of premium access"
+  }'
+```
+
+### Response Format
+
+All responses return JSON:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+{
+  "success": true,
+  "data": {
+    "id": "link_abc123",
+    "title": "Premium Service",
+    "amount": "100.00",
+    "url": "https://pay.shorpay.com/link/abc123"
+  },
+  "message": "Payment link created successfully"
+}
 ```
+
+## Rate Limits
+
+To ensure API stability, we enforce rate limits:
+
+| Plan | Requests per Hour | Burst Rate |
+|------|------------------|------------|
+| Standard | 1,000 | 100/minute |
+| Pro | 10,000 | 1,000/minute |
+| Enterprise | Custom | Custom |
+
+<Info>
+Rate limit headers are included in all responses:
+- `X-RateLimit-Limit`: Maximum requests per hour
+- `X-RateLimit-Remaining`: Requests remaining
+- `X-RateLimit-Reset`: Time when limit resets
+</Info>
+
+## API Versioning
+
+The Shor API uses URL versioning. The current version is `v1`.
+
+- Current: `https://api.shorpay.com/api/v1`
+- Legacy versions will be supported for 12 months after deprecation
+- Version changes will be announced 6 months in advance
+
+## SDK Support
+
+<Tabs>
+  <Tab title="JavaScript/Node.js">
+    ```bash
+    npm install @shor/sdk
+    ```
+    
+    ```javascript
+    const Shor = require('@shor/sdk');
+    const shor = new Shor('YOUR_API_KEY');
+    
+    const link = await shor.paymentLinks.create({
+      title: 'Product Name',
+      amount: '99.99'
+    });
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```bash
+    pip install shor-sdk
+    ```
+    
+    ```python
+    from shor import ShorClient
+    
+    client = ShorClient('YOUR_API_KEY')
+    link = client.payment_links.create(
+        title='Product Name',
+        amount='99.99'
+    )
+    ```
+  </Tab>
+  <Tab title="Coming Soon">
+    SDKs for additional languages are in development:
+    - PHP
+    - Ruby
+    - Go
+    - Java
+  </Tab>
+</Tabs>
+
+## Sandbox Environment
+
+Test your integration safely with our sandbox:
+
+- Base URL: `https://sandbox.api.shorpay.com/api/v1`
+- Use test API keys from sandbox dashboard
+- No real money movement
+- Same API structure as production
+
+<Warning>
+Sandbox data is cleared daily. Don't use for permanent testing.
+</Warning>
+
+## Getting Help
+
+### Resources
+
+- **API Status**: [status.shorpay.com](https://status.shorpay.com)
+- **Support**: api-support@shorpay.com
+- **GitHub**: [github.com/shorpay/api-examples](https://github.com/shorpay/api-examples)
+
+### Common Integration Patterns
+
+<AccordionGroup>
+  <Accordion title="E-commerce Integration">
+    Create payment links on-demand for shopping cart checkout
+  </Accordion>
+  <Accordion title="SaaS Subscriptions">
+    Generate recurring payment links for subscription billing
+  </Accordion>
+  <Accordion title="Marketplace Payments">
+    Split payments between multiple recipients
+  </Accordion>
+  <Accordion title="Invoice Processing">
+    Convert invoices to payable links automatically
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Ready to start building? Explore our API endpoints:
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    Learn how to authenticate API requests
+  </Card>
+  <Card title="Create Payment Link" icon="plus" href="/api-reference/payment-links/create">
+    Create your first payment link via API
+  </Card>
+  <Card title="List Transactions" icon="list" href="/api-reference/transactions/list">
+    Retrieve transaction history
+  </Card>
+  <Card title="Webhook Setup" icon="webhook" href="/api-reference/transactions/webhook">
+    Configure real-time notifications
+  </Card>
+</CardGroup>

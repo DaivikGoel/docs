@@ -1,0 +1,366 @@
+---
+title: 'Create Payment Link'
+api: 'POST /api/v1/merchant/payment-links/create'
+description: 'Create a new payment link for accepting payments'
+---
+
+## Request
+
+<ParamField body="title" type="string" required>
+  The title of your payment link. This will be displayed to customers.
+  
+  **Example**: "Premium Subscription"
+</ParamField>
+
+<ParamField body="amount" type="string">
+  The payment amount in USD. Leave empty for customer to specify.
+  
+  **Format**: Decimal string with up to 2 decimal places
+  
+  **Example**: "99.99"
+</ParamField>
+
+<ParamField body="description" type="string">
+  Additional details about the payment. Supports markdown formatting.
+  
+  **Example**: "One year of premium access to all features"
+</ParamField>
+
+<ParamField body="imageUrl" type="string">
+  URL of an image to display with the payment link.
+  
+  **Requirements**:
+  - Must be HTTPS URL
+  - Recommended size: 600x400px
+  - Supported formats: JPG, PNG, WebP
+</ParamField>
+
+<ParamField body="feeHandling" type="string" required>
+  Determines who pays the processing fee.
+  
+  **Options**:
+  - `merchant_absorbs`: You pay the fee, customer pays exact amount
+  - `customer_pays`: Customer pays the fee on top of the amount
+</ParamField>
+
+<ParamField body="isActive" type="boolean" default="true">
+  Whether the payment link should be immediately active.
+</ParamField>
+
+<ParamField body="baseWalletAddress" type="string">
+  Override the default wallet address for this payment link.
+  
+  **Note**: If not provided, uses your account's default wallet.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Custom key-value pairs for storing additional information.
+  
+  **Example**:
+  ```json
+  {
+    "order_id": "ORD-12345",
+    "customer_id": "CUST-67890"
+  }
+  ```
+</ParamField>
+
+<ParamField body="expiresAt" type="string">
+  ISO 8601 timestamp when the link should expire.
+  
+  **Example**: "2024-12-31T23:59:59Z"
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+  Indicates if the request was successful.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="data">
+    <ResponseField name="id" type="string">
+      Unique identifier for the payment link.
+    </ResponseField>
+    
+    <ResponseField name="title" type="string">
+      The payment link title.
+    </ResponseField>
+    
+    <ResponseField name="amount" type="string">
+      The payment amount or null if variable.
+    </ResponseField>
+    
+    <ResponseField name="description" type="string">
+      The payment description.
+    </ResponseField>
+    
+    <ResponseField name="imageUrl" type="string">
+      The image URL if provided.
+    </ResponseField>
+    
+    <ResponseField name="feeHandling" type="string">
+      The fee handling method.
+    </ResponseField>
+    
+    <ResponseField name="isActive" type="boolean">
+      Whether the link is active.
+    </ResponseField>
+    
+    <ResponseField name="url" type="string">
+      The full payment link URL.
+    </ResponseField>
+    
+    <ResponseField name="shortUrl" type="string">
+      A shortened version of the payment URL.
+    </ResponseField>
+    
+    <ResponseField name="qrCode" type="string">
+      Base64 encoded QR code image.
+    </ResponseField>
+    
+    <ResponseField name="payoutContractId" type="string">
+      The smart contract address for payouts.
+    </ResponseField>
+    
+    <ResponseField name="createdAt" type="string">
+      ISO 8601 timestamp of creation.
+    </ResponseField>
+    
+    <ResponseField name="metadata" type="object">
+      Custom metadata if provided.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Success or error message.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://api.shorpay.com/api/v1/merchant/payment-links/create \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Consultation Fee",
+    "amount": "150.00",
+    "description": "1-hour business consultation",
+    "feeHandling": "customer_pays",
+    "imageUrl": "https://example.com/consultation.jpg"
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('https://api.shorpay.com/api/v1/merchant/payment-links/create', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Consultation Fee',
+    amount: '150.00',
+    description: '1-hour business consultation',
+    feeHandling: 'customer_pays',
+    imageUrl: 'https://example.com/consultation.jpg'
+  })
+});
+
+const data = await response.json();
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://api.shorpay.com/api/v1/merchant/payment-links/create',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'title': 'Consultation Fee',
+        'amount': '150.00',
+        'description': '1-hour business consultation',
+        'feeHandling': 'customer_pays',
+        'imageUrl': 'https://example.com/consultation.jpg'
+    }
+)
+
+data = response.json()
+```
+
+```php PHP
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, 'https://api.shorpay.com/api/v1/merchant/payment-links/create');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer YOUR_API_KEY',
+    'Content-Type: application/json'
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+    'title' => 'Consultation Fee',
+    'amount' => '150.00',
+    'description' => '1-hour business consultation',
+    'feeHandling' => 'customer_pays',
+    'imageUrl' => 'https://example.com/consultation.jpg'
+]));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($response, true);
+```
+
+</CodeGroup>
+
+## Response Example
+
+<CodeGroup>
+
+```json Success Response
+{
+  "success": true,
+  "data": {
+    "id": "link_abc123xyz",
+    "title": "Consultation Fee",
+    "amount": "150.00",
+    "description": "1-hour business consultation",
+    "imageUrl": "https://example.com/consultation.jpg",
+    "feeHandling": "customer_pays",
+    "isActive": true,
+    "url": "https://pay.shorpay.com/link/abc123xyz",
+    "shortUrl": "https://shor.link/abc123",
+    "qrCode": "data:image/png;base64,iVBORw0KGgoAAAANS...",
+    "payoutContractId": "0x742d35Cc6634C0532925a3b844Bc9e7595f6E3c",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "metadata": {}
+  },
+  "message": "Payment link created successfully"
+}
+```
+
+```json Error Response
+{
+  "error": {
+    "type": "validation_error",
+    "message": "Request validation failed",
+    "code": "VALIDATION_FAILED",
+    "details": {
+      "errors": [
+        {
+          "field": "amount",
+          "message": "Amount must be at least 10.00"
+        },
+        {
+          "field": "title",
+          "message": "Title is required"
+        }
+      ]
+    }
+  },
+  "request_id": "req_abc123xyz"
+}
+```
+
+</CodeGroup>
+
+## Common Use Cases
+
+### Fixed Price Product
+
+```json
+{
+  "title": "Digital Course - Python Basics",
+  "amount": "49.99",
+  "description": "Learn Python programming from scratch",
+  "feeHandling": "merchant_absorbs",
+  "imageUrl": "https://courses.example.com/python-basics.jpg",
+  "metadata": {
+    "course_id": "PY101",
+    "duration": "6_weeks"
+  }
+}
+```
+
+### Variable Amount Donation
+
+```json
+{
+  "title": "Support Our Cause",
+  "description": "Your donation helps us continue our mission",
+  "feeHandling": "customer_pays",
+  "imageUrl": "https://charity.example.com/donate.jpg",
+  "metadata": {
+    "campaign": "2024_annual_fund"
+  }
+}
+```
+
+### Time-Limited Offer
+
+```json
+{
+  "title": "Black Friday Deal - 50% Off",
+  "amount": "99.99",
+  "description": "Limited time offer - expires midnight!",
+  "feeHandling": "merchant_absorbs",
+  "expiresAt": "2024-11-25T23:59:59Z",
+  "metadata": {
+    "promotion": "black_friday_2024",
+    "discount_percent": "50"
+  }
+}
+```
+
+## Error Codes
+
+| Code | Description |
+|------|-------------|
+| `VALIDATION_FAILED` | One or more fields failed validation |
+| `WALLET_NOT_CONFIGURED` | No wallet address configured |
+| `AMOUNT_TOO_LOW` | Amount below minimum ($10.00) |
+| `AMOUNT_TOO_HIGH` | Amount above maximum ($5,000.00) |
+| `INVALID_IMAGE_URL` | Image URL is not accessible or invalid format |
+| `RATE_LIMIT_EXCEEDED` | Too many payment links created |
+
+## Rate Limits
+
+- **Standard**: 100 payment links per hour
+- **Pro**: 1,000 payment links per hour
+- **Enterprise**: Custom limits
+
+## Best Practices
+
+1. **Always include descriptive titles** - Help customers understand what they're paying for
+2. **Use high-quality images** - Increases trust and conversion rates
+3. **Set appropriate fee handling** - Consider your margins and customer expectations
+4. **Include metadata** - Track orders, customers, or campaigns
+5. **Test in sandbox first** - Use test API keys before going live
+
+## Webhooks
+
+After creating a payment link, you'll receive webhooks for:
+- `link.created` - Immediate confirmation
+- `payment.initiated` - When customer starts payment
+- `payment.completed` - When payment succeeds
+- `payment.failed` - If payment fails
+
+See [Webhook Documentation](/api-reference/transactions/webhook) for details.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="List Payment Links" icon="list" href="/api-reference/payment-links/list">
+    Retrieve your payment links
+  </Card>
+  <Card title="Update Payment Link" icon="edit" href="/api-reference/payment-links/update">
+    Modify existing links
+  </Card>
+</CardGroup>

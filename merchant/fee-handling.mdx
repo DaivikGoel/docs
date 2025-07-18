@@ -1,0 +1,313 @@
+---
+title: Fee Handling Guide
+description: "Understanding and optimizing payment fees on Shor"
+---
+
+## Fee Overview
+
+Shor charges competitive platform fees to process payments. As a merchant, you have full control over how these fees are handled - either absorb them yourself or pass them to customers.
+
+## Fee Structure
+
+### Platform Fees
+
+Current fee structure:
+- **Standard Rate**: 2.9% of transaction amount
+- **Minimum Fee**: $0.30 per transaction
+- **No monthly fees**: Pay only for what you use
+- **No setup fees**: Start accepting payments immediately
+
+<Info>
+Volume discounts available for high-volume merchants. Contact sales@shorpay.com for custom pricing.
+</Info>
+
+### Additional Costs
+
+Beyond platform fees:
+- **Network Gas Fees**: Usually < $0.10 on Base
+- **Payment Provider Fees**: Varies by provider (included in platform fee)
+- **Currency Conversion**: If applicable (market rates)
+
+## Fee Handling Options
+
+### Option 1: Merchant Absorbs Fees
+
+<Tabs>
+  <Tab title="How It Works">
+    - Customer sees and pays exact price
+    - Fees deducted from your receipt
+    - Clean pricing for customers
+    - You receive: Amount - Fees
+  </Tab>
+  <Tab title="Example">
+    ```
+    Product Price: $100.00
+    Customer Pays: $100.00
+    Platform Fee: $2.90 (2.9%)
+    You Receive: $97.10
+    ```
+  </Tab>
+  <Tab title="Best For">
+    - Retail businesses
+    - Fixed-price products
+    - Price-sensitive customers
+    - Competitive markets
+  </Tab>
+</Tabs>
+
+### Option 2: Customer Pays Fees
+
+<Tabs>
+  <Tab title="How It Works">
+    - Customer sees base price + fees
+    - Full amount goes to you
+    - Transparent fee disclosure
+    - You receive: Full amount
+  </Tab>
+  <Tab title="Example">
+    ```
+    Product Price: $100.00
+    Platform Fee: $2.90 (2.9%)
+    Customer Pays: $102.90
+    You Receive: $100.00
+    ```
+  </Tab>
+  <Tab title="Best For">
+    - Service businesses
+    - B2B transactions
+    - Custom orders
+    - High-margin products
+  </Tab>
+</Tabs>
+
+## Fee Calculation Examples
+
+### Different Transaction Amounts
+
+| Amount | Fee (2.9%) | Customer Pays (Pass) | You Receive (Absorb) |
+|--------|------------|---------------------|---------------------|
+| $10 | $0.30* | $10.30 | $9.70 |
+| $50 | $1.45 | $51.45 | $48.55 |
+| $100 | $2.90 | $102.90 | $97.10 |
+| $500 | $14.50 | $514.50 | $485.50 |
+| $1,000 | $29.00 | $1,029.00 | $971.00 |
+
+*Minimum fee applies
+
+### Fee Impact Analysis
+
+<CardGroup cols={2}>
+  <Card title="Monthly Volume: $10,000" icon="chart-bar">
+    - Fees at 2.9%: $290
+    - Net revenue: $9,710
+    - Per transaction (avg $100): $2.90
+  </Card>
+  <Card title="Monthly Volume: $50,000" icon="chart-line">
+    - Fees at 2.9%: $1,450
+    - Net revenue: $48,550
+    - Eligible for volume discount
+  </Card>
+</CardGroup>
+
+## Choosing Your Strategy
+
+### When to Absorb Fees
+
+✅ **Absorb fees when:**
+- Competing on price
+- Selling to consumers
+- Marketing "no hidden fees"
+- Products with high margins
+- Building trust
+
+❌ **Don't absorb when:**
+- Margins are tight
+- B2B transactions
+- Custom services
+- Industry standard is to pass fees
+
+### When to Pass Fees
+
+✅ **Pass fees when:**
+- Industry standard practice
+- B2B transactions
+- Service-based business
+- Custom or negotiated pricing
+- Preserving margins
+
+❌ **Don't pass when:**
+- Competing on price
+- Consumer products
+- Impulse purchases
+- Building market share
+
+## Optimizing Fee Impact
+
+### Strategies to Reduce Fee Impact
+
+<AccordionGroup>
+  <Accordion title="Increase Average Order Value">
+    - Bundle products together
+    - Offer volume discounts
+    - Upsell complementary items
+    - Create minimum order amounts
+  </Accordion>
+  <Accordion title="Adjust Pricing Strategy">
+    - Build fees into base price
+    - Round prices strategically
+    - Offer "cash discount" equivalent
+    - Create fee-inclusive tiers
+  </Accordion>
+  <Accordion title="Communicate Value">
+    - Emphasize instant settlement
+    - Highlight security benefits
+    - Explain no chargeback risk
+    - Show total cost upfront
+  </Accordion>
+  <Accordion title="Volume Optimization">
+    - Consolidate smaller transactions
+    - Encourage bulk purchases
+    - Offer subscription models
+    - Negotiate volume rates
+  </Accordion>
+</AccordionGroup>
+
+## Fee Transparency
+
+### Customer Communication
+
+Best practices for fee disclosure:
+
+1. **Clear Disclosure**: Show fees before payment
+2. **Itemized Breakdown**: Separate product and fees
+3. **Explain Value**: Why fees exist
+4. **Consistent Policy**: Same rules for all
+
+### Sample Fee Disclosures
+
+<Tabs>
+  <Tab title="Simple">
+    ```
+    Subtotal: $100.00
+    Processing Fee: $2.90
+    Total: $102.90
+    ```
+  </Tab>
+  <Tab title="Detailed">
+    ```
+    Product: $100.00
+    Platform Fee (2.9%): $2.90
+    Network Fee: $0.05
+    Total Payment: $102.95
+    ```
+  </Tab>
+  <Tab title="Explanatory">
+    ```
+    Your Order: $100.00
+    Secure Payment Processing: $2.90
+    (Includes instant settlement and fraud protection)
+    Total: $102.90
+    ```
+  </Tab>
+</Tabs>
+
+## International Considerations
+
+### Cross-Border Fees
+
+Additional considerations for international payments:
+- Currency conversion rates
+- International payment provider fees
+- Regulatory compliance costs
+- Tax implications
+
+<Note>
+Shor currently supports USD/USDC transactions. Multi-currency support coming soon.
+</Note>
+
+## Fee Comparison
+
+### Shor vs Traditional Processors
+
+| Feature | Shor | Credit Cards | Bank Transfer |
+|---------|------|--------------|---------------|
+| **Transaction Fee** | 2.9% | 2.9% + $0.30 | $15-30 flat |
+| **Settlement Time** | 2-5 minutes | 1-3 days | 3-5 days |
+| **Chargeback Risk** | None | High | Low |
+| **International** | Same rate | +1-2% | +$25-45 |
+| **Monthly Fees** | None | Often $25+ | Often $10+ |
+
+## Advanced Fee Management
+
+### Dynamic Fee Handling
+
+Configure different fee handling per link:
+- Premium products: Absorb fees
+- Standard items: Pass fees
+- Bulk orders: Negotiate custom
+- Seasonal: Adjust by campaign
+
+### A/B Testing Fees
+
+Test fee strategies:
+1. Create two similar payment links
+2. One absorbs, one passes fees
+3. Compare conversion rates
+4. Implement winning strategy
+
+## Tax Implications
+
+### Fee Deductibility
+
+<Warning>
+Consult with your tax advisor about fee treatment. Generally, payment processing fees are deductible business expenses.
+</Warning>
+
+Consider:
+- Fees as business expense
+- Impact on revenue reporting
+- Tax deduction eligibility
+- Record keeping requirements
+
+## Frequently Asked Questions
+
+<FAQ>
+  <FAQItem question="Can I change fee handling after creating a link?">
+    Yes, but only if no transactions have been processed through that link yet.
+  </FAQItem>
+  <FAQItem question="Are there hidden fees?">
+    No. The platform fee covers everything except minimal blockchain gas fees (usually under $0.10).
+  </FAQItem>
+  <FAQItem question="How do volume discounts work?">
+    Process over $50,000/month to qualify. Contact sales for custom rates based on your volume.
+  </FAQItem>
+  <FAQItem question="Can I set different fees for different products?">
+    Yes, each payment link can have its own fee handling setting.
+  </FAQItem>
+</FAQ>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card
+    title="Payment Providers"
+    icon="credit-card"
+    href="/merchant/payment-providers"
+  >
+    Learn about payment method options
+  </Card>
+  <Card
+    title="Analytics"
+    icon="chart-mixed"
+    href="/merchant/analytics"
+  >
+    Track fee impact on revenue
+  </Card>
+  <Card
+    title="API Integration"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Programmatically manage fees
+  </Card>
+</CardGroup>
