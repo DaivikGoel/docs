@@ -20,7 +20,7 @@ After initiating a payment, you can track its progress through various stages. T
   
   <Card title="Pending" icon="clock" color="#yellow">
     **What it means**: Payment sent, awaiting confirmation
-    **Duration**: 2-5 minutes typically
+    **Duration**: 10 seconds typically
     **Action**: Wait for processing
   </Card>
   
@@ -60,7 +60,7 @@ When you see "Payment Pending":
 - Blockchain transaction is confirming
 
 **Normal pending duration**:
-- Zelle: 2-5 minutes
+- Zelle: 10 seconds
 - Future methods may vary
 
 <Note>
@@ -78,7 +78,7 @@ When you see "Payment Completed":
 You'll see:
 ```
 Payment Successful!
-Transaction ID: ORD-1234-5678-9012
+Transaction Hash: ORD-1234-5678-9012
 Amount: $100.00
 Status: Completed
 ```
@@ -119,133 +119,6 @@ The page updates automatically:
 2. **Visual feedback**: Progress bar moves
 3. **Status changes**: Instant notification
 4. **Completion alert**: Success message
-
-## What Happens at Each Stage
-
-### Technical Process
-
-<Timeline>
-  <TimelineItem title="Payment Sent" subtitle="0:00">
-    You complete Zelle transfer with reference code
-  </TimelineItem>
-  
-  <TimelineItem title="Detection" subtitle="0:30">
-    Shor system detects incoming payment
-  </TimelineItem>
-  
-  <TimelineItem title="Verification" subtitle="1:00">
-    Payment verified against order details
-  </TimelineItem>
-  
-  <TimelineItem title="Conversion" subtitle="1:30">
-    USD converted to USDC cryptocurrency
-  </TimelineItem>
-  
-  <TimelineItem title="Blockchain" subtitle="2:00">
-    USDC sent via smart contract
-  </TimelineItem>
-  
-  <TimelineItem title="Confirmation" subtitle="3:00">
-    Transaction confirmed on blockchain
-  </TimelineItem>
-</Timeline>
-
-### Behind the Scenes
-
-While you wait:
-- **AML Screening**: Compliance checks
-- **Fraud Detection**: Security verification
-- **Smart Matching**: Reference code matching
-- **Rate Locking**: Exchange rate secured
-- **Gas Optimization**: Efficient blockchain execution
-
-## Transaction Details
-
-### What You Can See
-
-Once completed, view:
-- **Transaction ID**: Unique identifier
-- **Timestamp**: Exact completion time
-- **Amount Paid**: What you sent
-- **USDC Delivered**: What merchant received
-- **Blockchain Hash**: Verification link
-- **Receipt Link**: Downloadable receipt
-
-### Email Confirmation
-
-Check your email for:
-```
-Subject: Payment Confirmation - Shor
-
-Transaction Details:
-- Order ID: ORD-1234-5678-9012
-- Amount: $100.00
-- Merchant: Example Store
-- Status: Completed
-- Time: 2024-01-15 3:45 PM EST
-
-View on Blockchain: [Link]
-Download Receipt: [Link]
-```
-
-## Status Timeframes
-
-### Expected Duration
-
-| Status | Typical Duration | Maximum Wait |
-|--------|-----------------|--------------|
-| Initiated | User-dependent | 30 minutes |
-| Pending | 2-5 minutes | 15 minutes |
-| Completed | Final status | - |
-| Failed | Final status | - |
-
-### When to Take Action
-
-<Tabs>
-  <Tab title="Still Pending After 5 Min">
-    1. Verify payment was sent
-    2. Check amount matches exactly
-    3. Confirm reference code included
-    4. Wait 5 more minutes
-  </Tab>
-  <Tab title="Still Pending After 10 Min">
-    1. Don't send another payment
-    2. Take screenshot of status
-    3. Note your transaction details
-    4. Contact support@shorpay.com
-  </Tab>
-  <Tab title="Shows Failed">
-    1. Read failure reason
-    2. Verify no payment was sent
-    3. Try payment again if safe
-    4. Contact support if unclear
-  </Tab>
-</Tabs>
-
-## Verifying Your Transaction
-
-### On the Blockchain
-
-All completed transactions are recorded on the Base blockchain:
-
-1. Click "View on Blockchain" link
-2. Opens Basescan explorer
-3. Shows complete transaction details
-4. Provides permanent proof of payment
-
-### What Blockchain Data Shows
-
-- **Transaction Hash**: Unique identifier
-- **From**: Payment processor wallet
-- **To**: Merchant's smart contract
-- **Value**: USDC amount
-- **Status**: Success confirmation
-- **Block**: When recorded
-- **Gas Fee**: Network cost
-
-<Info>
-Blockchain records are permanent and cannot be altered, providing ultimate transaction security.
-</Info>
 
 ## Common Status Questions
 

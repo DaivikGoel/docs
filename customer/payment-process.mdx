@@ -13,9 +13,9 @@ This guide provides a detailed walkthrough of the entire payment process, from r
 
 <Checklist>
 - [ ] Payment link from merchant
-- [ ] Access to your online banking (for account connection)
+- [ ] Access to Zelle through your bank
 - [ ] Email address for receipt
-- [ ] Bank account with sufficient funds
+- [ ] Bank account with Zelle enabled
 </Checklist>
 
 ### Quick Checks
@@ -69,62 +69,120 @@ Click "Pay Now" and provide:
   </Tab>
 </Tabs>
 
-### Step 3: Select Payment Method
+### Step 3: Phoenix Payment Window Opens
 
-Choose your payment method:
-
-<Card title="Bank Transfer (ACH)" icon="building-columns">
-  - Secure bank account connection via Teller
-  - Supported by most US banks
-  - Automatic transfer from your account
-  - Processes within minutes
-</Card>
+After clicking "Pay Now":
 
 <Info>
-Payments are processed through our secure payment partner Phoenix, which handles the conversion from USD to USDC.
+Payments are processed through Phoenix Market, which offers two convenient Zelle payment options.
 </Info>
 
-### Step 4: Connect Your Bank Account
+You'll see the Phoenix payment interface with two options:
 
-After clicking "Pay Now", you'll see a secure payment window:
+<CardGroup cols={2}>
+  <Card title="Automated Zelle" icon="bolt">
+    - Connect bank via Teller
+    - Automatic Zelle payment
+    - Faster processing
+    - No manual steps
+  </Card>
+  <Card title="Manual Zelle" icon="hand">
+    - Use your bank's Zelle
+    - Send manually
+    - Traditional method
+    - Works with any Zelle bank
+  </Card>
+</CardGroup>
 
-1. **Phoenix Payment Interface** opens in a secure frame
-2. **Connect Bank Account** button appears
-3. **Teller Integration** allows you to securely link your bank
-4. **Select your bank** from the list of supported institutions
-5. **Log in securely** using your online banking credentials
+### Step 4: Choose Your Zelle Method
 
-<Warning>
-Your banking credentials are never shared with Shor or the merchant. Teller uses bank-level encryption and security.
-</Warning>
-
-### Step 5: Complete Bank Transfer
-
-Once your bank is connected:
-
-<Steps>
-  <Step title="Select Account">
-    Choose which bank account to pay from
-  </Step>
+<Tabs>
+  <Tab title="Option A: Automated Zelle">
+    If you choose automated Zelle:
+    
+    1. **Click "Connect Bank"** in Phoenix interface
+    2. **Select your bank** from Teller's list
+    3. **Log in securely** to your online banking
+    4. **Authorize connection** for this payment only
+    5. **Confirm Zelle payment** details
+    
+    <Warning>
+    Your banking credentials are encrypted and never shared with merchants. Teller provides bank-level security.
+    </Warning>
+  </Tab>
   
-  <Step title="Review Amount">
-    - Verify the payment amount
-    - Check any applicable fees
-    - See total to be debited
-  </Step>
+  <Tab title="Option B: Manual Zelle">
+    If you choose manual Zelle:
+    
+    1. **Receive recipient details** from Phoenix
+    2. **Open your banking app** or Zelle app
+    3. **Add recipient** using provided email/phone
+    4. **Send exact amount** shown
+    5. **Return to Phoenix** and confirm sent
+    
+    <Note>
+    No reference codes needed - Phoenix automatically matches your payment.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Step 5: Complete Zelle Payment
+
+<Tabs>
+  <Tab title="Automated Zelle Process">
+    <Steps>
+      <Step title="Select Account">
+        Choose which account to send Zelle from
+      </Step>
+      
+      <Step title="Review Details">
+        - Verify payment amount
+        - Check recipient info
+        - Confirm total to send
+      </Step>
+      
+      <Step title="Authorize Payment">
+        - Zelle sent automatically
+        - No manual steps needed
+        - Instant processing begins
+      </Step>
+      
+      <Step title="Conversion">
+        - Phoenix receives Zelle
+        - Converts USD to USDC
+        - Sends to merchant wallet
+      </Step>
+    </Steps>
+  </Tab>
   
-  <Step title="Authorize Transfer">
-    - Review transfer details
-    - Confirm the payment
-    - May require additional bank verification
-  </Step>
-  
-  <Step title="Processing">
-    - Phoenix initiates the ACH transfer
-    - Converts USD to USDC
-    - Sends to merchant's wallet
-  </Step>
-</Steps>
+  <Tab title="Manual Zelle Process">
+    <Steps>
+      <Step title="Send via Your Bank">
+        - Open your banking app
+        - Go to Zelle section
+        - Send to provided recipient
+      </Step>
+      
+      <Step title="Enter Exact Amount">
+        - Match amount exactly
+        - Include cents if shown
+        - No extra fees
+      </Step>
+      
+      <Step title="Complete & Return">
+        - Send the Zelle payment
+        - Return to Phoenix window
+        - Click "I've sent payment"
+      </Step>
+      
+      <Step title="Verification">
+        - Phoenix verifies receipt
+        - Converts to USDC
+        - Completes transaction
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
 
 ### Step 6: Payment Processing
 
@@ -136,9 +194,10 @@ After authorizing the transfer:
 
 The payment window shows:
 ```
-Processing your payment...
+Verifying Zelle payment...
 Converting USD to USDC
 Sending to merchant wallet
+Transaction complete!
 ```
 
 ### Step 7: Payment Confirmation
@@ -169,19 +228,22 @@ Once processed, you'll see:
 ### What Happens Behind the Scenes
 
 <Timeline>
-  <TimelineItem title="Bank Account Connected" time="0:00">
-    You securely connect your bank through Teller
+  <TimelineItem title="Payment Method Selected" time="0:00">
+    You choose automated or manual Zelle in Phoenix
   </TimelineItem>
-  <TimelineItem title="ACH Transfer Initiated" time="0:30">
-    Phoenix initiates transfer from your bank account
+  <TimelineItem title="Zelle Payment Sent" time="0:30">
+    Either automatically via Teller or manually via your bank
   </TimelineItem>
-  <TimelineItem title="USD to USDC Conversion" time="1:00">
-    Phoenix converts your USD payment to USDC
+  <TimelineItem title="Phoenix Receives Payment" time="1:00">
+    Phoenix verifies Zelle receipt
   </TimelineItem>
-  <TimelineItem title="Blockchain Transaction" time="2:00">
-    USDC sent to merchant's wallet on Base network
+  <TimelineItem title="USD to USDC Conversion" time="2:00">
+    Phoenix converts your USD to USDC
   </TimelineItem>
-  <TimelineItem title="Confirmation" time="3:00">
+  <TimelineItem title="Blockchain Settlement" time="3:00">
+    USDC sent to merchant's wallet on Base
+  </TimelineItem>
+  <TimelineItem title="Confirmation" time="3:30">
     All parties notified of successful payment
   </TimelineItem>
 </Timeline>
@@ -190,12 +252,12 @@ Once processed, you'll see:
 
 Your payment is automatically tracked through:
 - **Order ID**: Created when you initiate payment
-- **Bank Connection**: Linked to your specific transaction
+- **Zelle Transaction**: Matched by Phoenix automatically
 - **Blockchain Transaction**: Verifiable on Base network
 - **Email Confirmation**: Sent to your provided email
 
 <Info>
-All payments are automatically matched and processed - no manual reference codes needed!
+Phoenix automatically matches your Zelle payment - no reference codes needed!
 </Info>
 
 ## Common Scenarios
@@ -221,14 +283,14 @@ For donations or custom amounts:
     ```
     Product Price: $100.00
     You Pay: $100.00
-    Merchant Receives: $97.10
+    Merchant Receives: $94.00
     ```
   </Tab>
   <Tab title="You Pay Fee">
     ```
     Product Price: $100.00
-    Processing Fee: $2.90
-    You Pay: $102.90
+    Processing Fee: $6.38
+    You Pay: $106.38
     Merchant Receives: $100.00
     ```
   </Tab>
@@ -240,7 +302,8 @@ For donations or custom amounts:
 
 ✅ **Do:**
 - Use a secure internet connection
-- Have your bank login ready
+- Have Zelle access ready
+- Send exact amount shown
 - Complete the process in one session
 - Save confirmations
 - Check email for receipt
@@ -254,31 +317,27 @@ For donations or custom amounts:
 
 ### Supported Banks
 
-Teller supports most major US banks:
-
 <AccordionGroup>
-  <Accordion title="Major Banks">
+  <Accordion title="For Automated Zelle (via Teller)">
     - Bank of America
     - Chase
     - Wells Fargo
-    - US Bank
-    - PNC Bank
-  </Accordion>
-  <Accordion title="Regional Banks">
-    - TD Bank
-    - Regions Bank
-    - Fifth Third Bank
-    - KeyBank
-    - And many more...
-  </Accordion>
-  <Accordion title="Credit Unions">
-    Most credit unions are supported through Teller's network
-  </Accordion>
-  <Accordion title="Online Banks">
-    - Ally Bank
     - Capital One
-    - Discover Bank
-    - And others
+    - US Bank
+    - And many more major banks
+  </Accordion>
+  <Accordion title="For Manual Zelle">
+    Any US bank with Zelle enabled:
+    - All major banks
+    - Most regional banks
+    - Many credit unions
+    - Standalone Zelle app
+  </Accordion>
+  <Accordion title="Not Sure?">
+    - Check your banking app for Zelle
+    - Look for "Send Money with Zelle"
+    - If not supported by Teller, use manual option
+    - Contact your bank to enable Zelle
   </Accordion>
 </AccordionGroup>
 
