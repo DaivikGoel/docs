@@ -20,12 +20,32 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
 **Security First**: Never share your private keys or seed phrase with anyone. These are like the master password to your wallet and should be kept completely private.
 </Note>
 
+## Choose Your Platform
+
+<CardGroup cols={2}>
+  <Card title="Browser Extension" icon="window-maximize" href="#browser-extension-setup">
+    Install MetaMask as a browser extension on Chrome, Firefox, Brave, or Edge for desktop use
+  </Card>
+  
+  <Card title="Mobile App" icon="mobile-alt" href="#mobile-app-setup">
+    Download the MetaMask app on iOS or Android for wallet access on the go
+  </Card>
+</CardGroup>
+
+<Tip>
+Many users install both versions and sync them together. Choose based on where you'll use crypto most often.
+</Tip>
+
+---
+
+## Browser Extension Setup
+
 ### What You'll Need
 - A computer with internet access
 - A web browser (Chrome, Firefox, Brave, or Edge)
 - A secure place to store your backup information
 
-## Step 1: Install MetaMask
+### Step 1: Install MetaMask Extension
 
 <AccordionGroup>
   <Accordion icon="download" title="Download MetaMask Extension">
@@ -44,7 +64,7 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
   </Accordion>
 </AccordionGroup>
 
-## Step 2: Create Your Wallet
+### Step 2: Create Your Wallet
 
 <AccordionGroup>
   <Accordion icon="plus" title="Start Wallet Creation">
@@ -74,7 +94,138 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
   </Accordion>
 </AccordionGroup>
 
-## Step 3: Understanding Your Wallet
+### Step 3: Browser Security
+
+<AccordionGroup>
+  <Accordion icon="lock" title="Password Protection">
+    - Use a strong, unique password
+    - Never save your password in browser autocomplete
+    - Consider using a password manager
+    - Lock MetaMask when not in use (click profile icon → Lock)
+  </Accordion>
+  
+  <Accordion icon="shield" title="Browser Security Tips">
+    - Only use MetaMask on trusted devices
+    - Be cautious with browser extensions
+    - Clear browser cache if switching devices
+    - Use a dedicated browser profile for crypto
+  </Accordion>
+  
+  <Accordion icon="plug" title="Extension Management">
+    - Pin MetaMask to your browser toolbar
+    - Check for official updates regularly
+    - Never install MetaMask from unofficial sources
+    - Be wary of fake MetaMask extensions
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Mobile App Setup
+
+### What You'll Need
+- An iOS or Android smartphone
+- A secure place to store your backup information
+- The official MetaMask app (not a clone)
+
+### Step 1: Download MetaMask Mobile
+
+<AccordionGroup>
+  <Accordion icon="apple" title="iOS Installation">
+    1. Open the App Store
+    2. Search for "MetaMask - Blockchain Wallet"
+    3. Verify the developer is "MetaMask"
+    4. Tap "Get" to download
+    5. Wait for installation to complete
+  </Accordion>
+  
+  <Accordion icon="android" title="Android Installation">
+    1. Open Google Play Store
+    2. Search for "MetaMask - Crypto Wallet"
+    3. Verify the developer is "MetaMask"
+    4. Tap "Install"
+    5. Wait for installation to complete
+  </Accordion>
+</AccordionGroup>
+
+### Step 2: Create Your Mobile Wallet
+
+<AccordionGroup>
+  <Accordion icon="plus" title="Start Wallet Creation">
+    1. Open the MetaMask app
+    2. Tap "Get started"
+    3. Choose "Create a new wallet"
+    4. Review and accept the terms
+  </Accordion>
+  
+  <Accordion icon="key" title="Set Up Security">
+    1. Create a strong password
+    2. Enable biometric authentication (Face ID/Touch ID/Fingerprint)
+    3. Watch the security video (required)
+    4. Tap "Continue" when ready
+  </Accordion>
+  
+  <Accordion icon="seedling" title="Backup Your Seed Phrase">
+    **Critical Step - Do Not Skip!**
+    
+    1. Tap "Start" to reveal your seed phrase
+    2. Write down all 12 words in order on paper
+    3. Store this paper in a secure location
+    4. Never take a screenshot or photo
+    5. Tap "Continue" after securing your phrase
+    6. Confirm by selecting words in the correct order
+  </Accordion>
+</AccordionGroup>
+
+### Step 3: Mobile-Specific Features
+
+<AccordionGroup>
+  <Accordion icon="sync" title="Sync with Browser Extension">
+    If you want to use the same wallet on desktop:
+    
+    1. Install MetaMask browser extension first
+    2. In browser: Settings → Advanced → Sync with Mobile
+    3. In mobile app: Settings → Sync with Extension
+    4. Scan the QR code with your phone
+    5. Your accounts sync automatically
+  </Accordion>
+  
+  <Accordion icon="globe" title="Connect to dApps">
+    1. Open the built-in browser (bottom menu)
+    2. Navigate to any dApp website
+    3. Click "Connect Wallet" on the site
+    4. Approve the connection request
+    
+    Or use WalletConnect:
+    1. Look for WalletConnect option on desktop dApps
+    2. Scan the QR code with MetaMask mobile
+    3. Approve the connection
+  </Accordion>
+  
+  <Accordion icon="shield" title="Mobile Security Settings">
+    1. Go to Settings → Security & Privacy
+    2. Enable "Auto-Lock" (recommended: 5 minutes)
+    3. Turn on "Require Authentication" for transactions
+    4. Consider enabling "Privacy Mode"
+    5. Disable "Join MetaMask Beta" unless testing
+  </Accordion>
+  
+  <Accordion icon="shield-alt" title="Mobile-Specific Security">
+    - **Public WiFi**: Avoid transactions on public networks
+    - **App Permissions**: Only grant necessary permissions
+    - **Screenshots**: Never screenshot your seed phrase
+    - **Auto-lock**: Set a short timer (5 minutes recommended)
+    - **App Updates**: Keep MetaMask updated through official app stores
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Using Your MetaMask Wallet
+
+The following sections apply to both browser extension and mobile app users.
+
+### Understanding Your Wallet
 
 <CardGroup cols={2}>
   <Card title="Account Address" icon="address-book">
@@ -94,14 +245,19 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
   </Card>
 </CardGroup>
 
-## Step 4: Your First Steps
+### Getting Started
 
 <AccordionGroup>
   <Accordion icon="eye" title="View Your Wallet">
+    **Browser:**
     1. Click the MetaMask fox icon
-    2. You'll see your account address (click to copy)
-    3. Check your balance (will be 0 ETH initially)
-    4. Explore the interface - it's your crypto dashboard
+    2. View your account address (click to copy)
+    3. Check your balance (0 ETH initially)
+    
+    **Mobile:**
+    1. Open the MetaMask app
+    2. Your address appears at the top
+    3. Tap to copy your address
   </Accordion>
   
   <Accordion icon="network-wired" title="Understanding Networks">
@@ -109,27 +265,27 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
     
     - **Ethereum Mainnet**: The main Ethereum network (real money)
     - **Testnets**: Practice networks (fake money for testing)
-    - **Other Networks**: Polygon, BSC, etc.
+    - **Other Networks**: Polygon, BSC, Arbitrum, etc.
     
-    For beginners, stick with Ethereum Mainnet initially.
+    Start with Ethereum Mainnet for real transactions.
   </Accordion>
   
   <Accordion icon="wallet" title="Getting Your First Crypto">
-    To get started, you'll need some cryptocurrency:
+    To start using MetaMask, you'll need cryptocurrency:
     
-    1. **Buy from an exchange** (Coinbase, Binance, etc.)
-    2. **Receive from someone** (friend, family, payment)
-    3. **Earn through activities** (airdrops, rewards, etc.)
+    1. **Buy from an exchange** (Coinbase, Kraken, Binance)
+    2. **Receive from someone** (share your wallet address)
+    3. **Purchase directly in MetaMask** (via MoonPay, Transak)
     
-    You'll need some ETH to pay for transaction fees.
+    Note: You need ETH to pay for transaction fees on Ethereum.
   </Accordion>
 </AccordionGroup>
 
-## Step 5: Security Best Practices
+### Security Best Practices
 
 <Warning>
 **Never share your private keys or seed phrase with anyone, including:**
-- Customer support
+- Customer support teams
 - Websites asking for your keys
 - People claiming to be MetaMask support
 - Anyone promising to help you recover funds
@@ -140,8 +296,8 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
     Store your seed phrase on paper in a fireproof safe or safety deposit box. Never store it digitally.
   </Card>
   
-  <Card title="Password Protection" icon="lock">
-    Use a strong, unique password for your MetaMask wallet that you don't use elsewhere.
+  <Card title="Strong Passwords" icon="lock">
+    Use a unique password for MetaMask that you don't use elsewhere. Consider a password manager.
   </Card>
   
   <Card title="Device Security" icon="shield">
@@ -153,7 +309,7 @@ Think of MetaMask as a digital wallet that lives in your web browser, similar to
   </Card>
 </CardGroup>
 
-## Step 6: Common Actions
+### Common Actions
 
 <AccordionGroup>
   <Accordion icon="arrow-right" title="Sending Crypto">
