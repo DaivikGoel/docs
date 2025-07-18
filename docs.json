@@ -3,11 +3,11 @@
   "theme": "mint",
   "name": "Shor Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#015d6a",
+    "light": "#54e4c8",
+    "dark": "#015d6a"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
