@@ -35,6 +35,13 @@
         "tab": "Merchant Guide",
         "groups": [
           {
+            "group": "Getting Started",
+            "pages": [
+              "merchant/wallet-setup",
+              "merchant/first-payment-link"
+            ]
+          },
+          {
             "group": "Dashboard",
             "pages": [
               "merchant/overview",
@@ -66,65 +73,6 @@
               "customer/payment-methods",
               "customer/transaction-status",
               "customer/troubleshooting"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Introduction",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication",
-              "api-reference/errors"
-            ]
-          },
-          {
-            "group": "Payment Links",
-            "pages": [
-              "api-reference/payment-links/create",
-              "api-reference/payment-links/list",
-              "api-reference/payment-links/update",
-              "api-reference/payment-links/delete"
-            ]
-          },
-          {
-            "group": "Transactions",
-            "pages": [
-              "api-reference/transactions/list",
-              "api-reference/transactions/get",
-              "api-reference/transactions/webhook"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Developer Guide",
-        "groups": [
-          {
-            "group": "Technical Overview",
-            "pages": [
-              "developer/architecture",
-              "developer/tech-stack",
-              "developer/smart-contracts"
-            ]
-          },
-          {
-            "group": "Integration",
-            "pages": [
-              "developer/webhooks",
-              "developer/api-integration",
-              "developer/sdk"
-            ]
-          },
-          {
-            "group": "Self-Hosting",
-            "pages": [
-              "developer/deployment",
-              "developer/configuration",
-              "developer/security"
             ]
           }
         ]
